@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="一些简答题">
+  <meta name="author" content="Yuhuai Guo">
+  <meta name="keywords" content="">
+  
+     
+  
+  <title>new_action_免疫简答题纲 - SDIOPID</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/header.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sdiopid.top","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h2,h3,h4,h5,h6","placement":"left","visible":"always","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>SDIOPID</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://api.yimian.xyz/img?type=wallpaper') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="new_action_免疫简答题纲">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Yuhuai Guo
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-17 02:53" pubdate>
+        2021年7月17日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      564 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">new_action_免疫简答题纲</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：3 个月前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="免疫简答题"><a class="markdownIt-Anchor" href="#免疫简答题">❡</a> 免疫简答题</h1>
+<h2 id="免-疫-系-统-的-组-成"><a class="markdownIt-Anchor" href="#免-疫-系-统-的-组-成">❡</a> 免 疫 系 统 的 组 成 。</h2>
+<h2 id="举-例-说-明-免-疫-系-统-的-三-大-基-本-功-能"><a class="markdownIt-Anchor" href="#举-例-说-明-免-疫-系-统-的-三-大-基-本-功-能">❡</a> 举 例 说 明 免 疫 系 统 的 三 大 基 本 功 能 。</h2>
+<h2 id="免-疫-应-答-的-种-类-及-其-特-点"><a class="markdownIt-Anchor" href="#免-疫-应-答-的-种-类-及-其-特-点">❡</a> 免 疫 应 答 的 种 类 及 其 特 点 。</h2>
+<h2 id="简述中枢和外周免疫器官的组成及其功能"><a class="markdownIt-Anchor" href="#简述中枢和外周免疫器官的组成及其功能">❡</a> 简述中枢和外周免疫器官的组成及其功能。</h2>
+<h2 id="简-述-抗-原-的-概-念-及-其-基-本-特-性"><a class="markdownIt-Anchor" href="#简-述-抗-原-的-概-念-及-其-基-本-特-性">❡</a> 简 述 抗 原 的 概 念 及 其 基 本 特 性</h2>
+<h2 id="抗-原-表-位-的-概-念"><a class="markdownIt-Anchor" href="#抗-原-表-位-的-概-念">❡</a> 抗 原 表 位 的 概 念</h2>
+<h2 id="超-抗-原-与-佐-剂-的-概-念"><a class="markdownIt-Anchor" href="#超-抗-原-与-佐-剂-的-概-念">❡</a> 超 抗 原 与 佐 剂 的 概 念</h2>
+<h2 id="简-述-抗-体-的-纟-吉-构-及-其-功-能"><a class="markdownIt-Anchor" href="#简-述-抗-体-的-纟-吉-构-及-其-功-能">❡</a> 简 述 抗 体 的 纟 吉 构 及 其 功 能##</h2>
+<h2 id="多-克-隆-与-单-克-隆-抗-体-的-定-义"><a class="markdownIt-Anchor" href="#多-克-隆-与-单-克-隆-抗-体-的-定-义">❡</a> 多 克 隆 与 单 克 隆 抗 体 的 定 义</h2>
+<h2 id="qi-为-什-么-hat-培-养-基-能-够-筛-选-出-杂-交-瘤-细-胞"><a class="markdownIt-Anchor" href="#qi-为-什-么-hat-培-养-基-能-够-筛-选-出-杂-交-瘤-细-胞">❡</a> QI ： 为 什 么 HAT 培 养 基 能 够 筛 选 出 杂 交 瘤 细 胞 ？</h2>
+<h2 id="补-体-激-活-的-途-径-及-其-特-点"><a class="markdownIt-Anchor" href="#补-体-激-活-的-途-径-及-其-特-点">❡</a> 补 体 激 活 的 途 径 及 其 特 点</h2>
+<h2 id="补-体-的-生-物-学-意-义-补-体-的-生-物-学-功-能"><a class="markdownIt-Anchor" href="#补-体-的-生-物-学-意-义-补-体-的-生-物-学-功-能">❡</a> 补 体 的 生 物 学 意 义 / 补 体 的 生 物 学 功 能</h2>
+<h2 id="细-胞-因-子-的-概-念"><a class="markdownIt-Anchor" href="#细-胞-因-子-的-概-念">❡</a> 细 胞 因 子 的 概 念</h2>
+<h2 id="胞-因-子-的-共-同-特-点-及-分-类"><a class="markdownIt-Anchor" href="#胞-因-子-的-共-同-特-点-及-分-类">❡</a> 胞 因 子 的 共 同 特 点 及 分 类</h2>
+<h2 id="b1细-胞-与-b2-细-胞-亚-群-的-比-较-表-9-一-1"><a class="markdownIt-Anchor" href="#b1细-胞-与-b2-细-胞-亚-群-的-比-较-表-9-一-1">❡</a> B1细 胞 与 B2 细 胞 亚 群 的 比 较 （ 表 9 一 1 ）</h2>
+<h2 id="bcr-复-合-物-的-组-成"><a class="markdownIt-Anchor" href="#bcr-复-合-物-的-组-成">❡</a> BCR 复 合 物 的 组 成</h2>
+<h2 id="b-细-胞-功-能"><a class="markdownIt-Anchor" href="#b-细-胞-功-能">❡</a> B 细 胞 功 能</h2>
+<h2 id="mhc-的概念-hla概念"><a class="markdownIt-Anchor" href="#mhc-的概念-hla概念">❡</a> MHC 的概念 、 HLA概念</h2>
+<h2 id="hla-一-i-类-和-hla-一-il-类-分-子-的-结-构-分-布-和-功-能-表-8-一-2"><a class="markdownIt-Anchor" href="#hla-一-i-类-和-hla-一-il-类-分-子-的-结-构-分-布-和-功-能-表-8-一-2">❡</a> HLA 一 I 类 和 HLA 一 Il 类 分 子 的 结 构 、 分 布 和 功 能 （ 表 8 一 2</h2>
+<h2 id="hla-分-子-与-适-应-性-免-疫-的-关-系"><a class="markdownIt-Anchor" href="#hla-分-子-与-适-应-性-免-疫-的-关-系">❡</a> HLA 分 子 与 适 应 性 免 疫 的 关 系</h2>
+<h2 id="dc-的-功-能"><a class="markdownIt-Anchor" href="#dc-的-功-能">❡</a> DC 的 功 能</h2>
+<h2 id="mhc-丨-类-和-il-类-分-子-抗-原-提-呈-途-径-表-11-一-2"><a class="markdownIt-Anchor" href="#mhc-丨-类-和-il-类-分-子-抗-原-提-呈-途-径-表-11-一-2">❡</a> MHC 丨 类 和 Il 类 分 子 抗 原 提 呈 途 径 （ 表 11 一 2 ）</h2>
+<h2 id="t-细-胞-活-化-的-双-信-号"><a class="markdownIt-Anchor" href="#t-细-胞-活-化-的-双-信-号">❡</a> T 细 胞 活 化 的 双 信 号</h2>
+<h2 id="效-应-性-t-细-胞-的-亚-群-及-免-疫-保-护-功-能-表-12-一-1-免-疫-保-护-作-用"><a class="markdownIt-Anchor" href="#效-应-性-t-细-胞-的-亚-群-及-免-疫-保-护-功-能-表-12-一-1-免-疫-保-护-作-用">❡</a> 效 应 性 T 细 胞 的 亚 群 及 免 疫 保 护 功 能 （ 表 12 一 1 免 疫 保 护 作 用 ）</h2>
+<h2 id="ctl-杀-伤-靶-纟-田-胞-的-机-制"><a class="markdownIt-Anchor" href="#ctl-杀-伤-靶-纟-田-胞-的-机-制">❡</a> CTL 杀 伤 靶 纟 田 胞 的 机 制</h2>
+<h2 id="b-细-胞-对-t-和-td-抗-原-应-答-的-区-别-表-3-一-4"><a class="markdownIt-Anchor" href="#b-细-胞-对-t-和-td-抗-原-应-答-的-区-别-表-3-一-4">❡</a> B 细 胞 对 T 和 TD 抗 原 应 答 的 区 别 （ 表 3 一 4 ）</h2>
+<h2 id="b-细-胞-受-t-d-抗-原-刺-激-活-化-需-要-的-信-号"><a class="markdownIt-Anchor" href="#b-细-胞-受-t-d-抗-原-刺-激-活-化-需-要-的-信-号">❡</a> B 细 胞 受 T D 抗 原 刺 激 活 化 需 要 的 信 号</h2>
+<h2 id="抗-体-产-生-的-一-般-规-律"><a class="markdownIt-Anchor" href="#抗-体-产-生-的-一-般-规-律">❡</a> 抗 体 产 生 的 一 般 规 律</h2>
+<h2 id="固-有-免-疫-系-统-的-组-成-和-固-有-免-疫-细-胞-的-分-类-举-例"><a class="markdownIt-Anchor" href="#固-有-免-疫-系-统-的-组-成-和-固-有-免-疫-细-胞-的-分-类-举-例">❡</a> 固 有 免 疫 系 统 的 组 成 和 固 有 免 疫 细 胞 的 分 类 （ 举 例 ）</h2>
+<h2 id="模-式-识-另-刂-受-体-和-病-原-相-关-分-子-模-式-的-概-念"><a class="markdownIt-Anchor" href="#模-式-识-另-刂-受-体-和-病-原-相-关-分-子-模-式-的-概-念">❡</a> 模 式 识 另 刂 受 体 和 病 原 相 关 分 子 模 式 的 概 念</h2>
+<h2 id="巨-噬-细-胞-表-面-主-要-的-模-式-识-另-刂-受-体"><a class="markdownIt-Anchor" href="#巨-噬-细-胞-表-面-主-要-的-模-式-识-另-刂-受-体">❡</a> 巨 噬 细 胞 表 面 主 要 的 模 式 识 另 刂 受 体</h2>
+<h2 id="固-有-免-疫-的-作-用-特-点-l-26"><a class="markdownIt-Anchor" href="#固-有-免-疫-的-作-用-特-点-l-26">❡</a> 固 有 免 疫 的 作 用 特 点 ()l 26 ）</h2>
+<h2 id="黏-膜-免-疫-系-统-和-黏-膜-相-关-淋-巴-组-织-的-组-成"><a class="markdownIt-Anchor" href="#黏-膜-免-疫-系-统-和-黏-膜-相-关-淋-巴-组-织-的-组-成">❡</a> 黏 膜 免 疫 系 统 和 黏 膜 相 关 淋 巴 组 织 的 组 成</h2>
+<h2 id="冤疫耐受的概念不"><a class="markdownIt-Anchor" href="#冤疫耐受的概念不">❡</a> 冤疫耐受的概念不</h2>
+<h2 id="超-敏-反-应-的-概-念-和-分-型"><a class="markdownIt-Anchor" href="#超-敏-反-应-的-概-念-和-分-型">❡</a> 超 敏 反 应 的 概 念 和 分 型 ，</h2>
+<h2 id="各-类-超-敏-反-应-的-发-生-及-典-型-疾-病-表-18-1"><a class="markdownIt-Anchor" href="#各-类-超-敏-反-应-的-发-生-及-典-型-疾-病-表-18-1">❡</a> 各 类 超 敏 反 应 的 发 生 及 典 型 疾 病 （ 表 18 · 1 ）</h2>
+<h2 id="自-身-免-疫-病-的-概-念-和-病-理-损-伤-机-制"><a class="markdownIt-Anchor" href="#自-身-免-疫-病-的-概-念-和-病-理-损-伤-机-制">❡</a> 自 身 免 疫 病 的 概 念 和 病 理 损 伤 机 制</h2>
+<h2 id="免-疫-缺-陷-病-的-概-念-分-类-和-临-床-特-占"><a class="markdownIt-Anchor" href="#免-疫-缺-陷-病-的-概-念-分-类-和-临-床-特-占">❡</a> 免 疫 缺 陷 病 的 概 念 、 分 类 和 临 床 特 占</h2>
+<h2 id="人-工-免-疫-的-分-类-并-举-例"><a class="markdownIt-Anchor" href="#人-工-免-疫-的-分-类-并-举-例">❡</a> 人 工 免 疫 的 分 类 并 举 例</h2>
+<h2 id="苗-的-种-类"><a class="markdownIt-Anchor" href="#苗-的-种-类">❡</a> 苗 的 种 类</h2>
+<h2 id="肿-瘤-细-胞-的-免-疫-逃-谗-机-制"><a class="markdownIt-Anchor" href="#肿-瘤-细-胞-的-免-疫-逃-谗-机-制">❡</a> 肿 瘤 细 胞 的 免 疫 逃 谗 机 制</h2>
+<h2 id="肿-瘤-免-疫-治-疗-的-分-类-及-举-例"><a class="markdownIt-Anchor" href="#肿-瘤-免-疫-治-疗-的-分-类-及-举-例">❡</a> 肿 瘤 免 疫 治 疗 的 分 类 及 举 例</h2>
+<h2 id="同-种-异-型-移-植-排-斥-反-应-的-分-类"><a class="markdownIt-Anchor" href="#同-种-异-型-移-植-排-斥-反-应-的-分-类">❡</a> 同 种 异 型 移 植 排 斥 反 应 的 分 类</h2>
+<h2 id="宿-主-沆-移-植-物-反-应-的-分-类"><a class="markdownIt-Anchor" href="#宿-主-沆-移-植-物-反-应-的-分-类">❡</a> 宿 主 沆 移 植 物 反 应 的 分 类</h2>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AC%AC%E4%B8%89%E7%BA%A7/">第三级</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AC%AC%E4%B8%89%E7%BA%A7/%E5%B7%A5%E4%BD%9C%E5%8F%B0/">工作台</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/new/">new</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    博客所有内容除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-NC-SA 4.0 协议</a> ，转载请<a href="https://www.sdiopid.top/about/" rel="nofollow noopener">@SDIOPID</a>呦！<img src="/img/lxh2.png" srcset="/img/loading.gif" lazyloadstyle="width:50px; height:50px;">
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/07/24/new_action_CTCs/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">new_action_CTCs</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/06/25/023-%E9%9A%8F%E7%AC%94-%E4%B8%80%E5%BC%A0%E5%9B%BE%E7%89%87/">
+                        <span class="hidden-mobile">231-随笔-一张图片</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="/img/sxin.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://www.sdiopid.top" target="_blank" rel="nofollow noopener"><span>斯丢匹得</span></a> <i class="iconfont icon-love"></i> <a  target="_blank" rel="nofollow noopener"><span>SDIOPID</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

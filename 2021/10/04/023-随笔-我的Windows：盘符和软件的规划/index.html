@@ -1,0 +1,602 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="blogs">
+  <meta name="author" content="Yuhuai Guo">
+  <meta name="keywords" content="">
+  
+     
+  
+  <title>023-随笔-我的Windows：硬盘空间光大还不够-盘符和软件的规划 - SDIOPID</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/header.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sdiopid.top","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h2,h3,h4,h5,h6","placement":"left","visible":"always","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>SDIOPID</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://api.yimian.xyz/img?type=wallpaper') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="023-随笔-我的Windows：硬盘空间光大还不够-盘符和软件的规划">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Yuhuai Guo
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-04 11:51" pubdate>
+        2021年10月4日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">023-随笔-我的Windows：硬盘空间光大还不够-盘符和软件的规划</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：14 天前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <hr>
+<p><img src="/img/image-20211004135543370.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p>不得不承认，随着电脑使用时间的时间越来越长，大量的数据变得难以管理，尽管在使用过程中对文件的分来管理存在不断优化，但是我认为在电脑使用指出就应该建立起文件管理的意识。这对于后期的使用体验是有重大积极意义的。</p>
+<h2 id="盘符与软件那些不太去翻的文件夹"><a class="markdownIt-Anchor" href="#盘符与软件那些不太去翻的文件夹">❡</a> 盘符与软件：那些不太去翻的文件夹</h2>
+<p>对于一台只有五百多G的电脑来说，盘符无非D盘和C盘。得益于固态硬盘优越的读写能力，甚至许多电脑只分配了一个C盘。</p>
+<p>在C盘，随着软件的使用和安装软件数目的增加，空间会变得越来越小。一般情况下，对于C盘的瘦身是很难下手的，通过清理软件扫除的几个G的垃圾都是小打小闹，真正占去大头的是你安装的软件，还有Windows更新后的臃肿文件。</p>
+<p>对此虽然我没有办法进行优化，但是这部分文件通常不用我们人为的去访问文件夹，都是电脑程序自行调用。因此，在有足够的空间和足够的读写速度的情况下，这部分文件对日常使用体验影响甚微。我们唯一需要注意的是，解决好一些关联程序之间的处理，当然，这些通常在安装软件的时候就必须完成。</p>
+<p><img src="/img/image-20211004135726719.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p>在刚刚上手电脑的时候，我随手在D盘建了一个文件夹，用来放几乎所有我安装的软件。可是随着时间的推移，一些软件的安装目录十分不规范，这使得这个文件夹变得十分混乱，如今我已经有一年以上没有点开它了。我在桌面重新建了一个文件夹，在每次安装软件的时候，都要自己新建一个文件做好必要的处理。对于大容量硬盘来说可以为软件专门分一个盘符。</p>
+<p><strong>后面的使用体验也证明了这是一个十分好的使用习惯。</strong></p>
+<p>还有一个习惯也被我慢慢养成了——我都桌面被我铺得满满当当。</p>
+<h2 id="需要经常访问的文件"><a class="markdownIt-Anchor" href="#需要经常访问的文件">❡</a> 需要经常访问的文件</h2>
+<p>这些文件往往跟你做的事情有关</p>
+<p>从使用频率上来讲，你经常使用的文件夹当然值得把它放在桌面上来。但是如果只是单纯的放在桌面上，这会使你的文件变得越来越乱。所以桌面上出现的以快捷方式为好。</p>
+<h3 id="下载的文件"><a class="markdownIt-Anchor" href="#下载的文件">❡</a> 下载的文件</h3>
+<p><img src="/img/image-20211004135832021.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p>不管是从互联网下载的文件，还是从软件下载的文件。这些文件从被下载那一刻，就已经决定会被你亲自访问。单然，优秀的下载器会为你的文件自动归类，而Windows自己的下载库（主要存放从互联网下载的文件），是按时间分隔开的，找到文件非常简单，只要你下次还能认出这个文件的名字。</p>
+<p>从软件下载的文件，例如QQ中保存的文件，他们会被统一放在一个文件夹，未来方便日后访问，所以建议将软件下载库的文件夹发送一个快捷方式出来，当然，如果你软件比较多需要通过软件下载的东西也非常多，建议你在桌面建立一个文件夹专门存放它们的快捷方式。</p>
+<p>这些下载的文件日积月累可以成百上千，所以为了方便你近期使用后日后查找，建议你定期归档一次。比如说，每年元旦，把今年所有下载的文件都移动到一个以日期命名的文件夹去，这样你的下载库就空空如也了。</p>
+<h3 id="创建的文件"><a class="markdownIt-Anchor" href="#创建的文件">❡</a> 创建的文件</h3>
+<p>Windows库中的「文档」文件夹下，对标的是你创建的文件夹。</p>
+<p>许多软件在会将该文件夹作为保存你新建文件的默认文件夹，所以随着你安装软件的增多和使用不注意，这个文件夹下会越来越多越来越乱。</p>
+<p><img src="/img/image-20211004135501873.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p>所以最好新建立一个文件夹，来存放你要做的事情。这些文档也应该有一个合理的分类。对于最近新建立的项目可以先不着急放在你的归档里面去，你可以建立一个underwork文件夹专门存放最近在完成的文件。</p>
+<h3 id="导入和导出的文件"><a class="markdownIt-Anchor" href="#导入和导出的文件">❡</a> 导入和导出的文件</h3>
+<p>导入的文件，比如照片视频。这些文件在处理前主要起个备份的作用，处理之后是需要导出的。按照这个特性可以先在文件夹下建好input和output文件夹。重要的文件建议再复制backup文件。</p>
+<h2 id="软件及其关联"><a class="markdownIt-Anchor" href="#软件及其关联">❡</a> 软件及其关联</h2>
+<p>office软件之间是可以关联的，office软件和一些其他软件也是可以关联的（比如endnote）。还有比如rstudio里面是可以运行python的，低需求使用rstudio来编写和运行py程序是非常不错的。还有许多软件组合起来使用，会有非常大的便捷和很棒的使用体验。</p>
+<center>我下载的一些软件</center>
+<p><img src="/img/image-20211004140036962.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="/img/image-20211004140102883.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<p><img src="/img/image-20211004140151945.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="文献三部曲浏览器edge-endnote-有道翻译"><a class="markdownIt-Anchor" href="#文献三部曲浏览器edge-endnote-有道翻译">❡</a> 文献三部曲：浏览器Edge、EndNote、有道翻译</h3>
+<p>利用edge好配置的特点，装上插件，查文献、上网冲浪的好扳手；</p>
+<p>Endnote，管理文献很好用，对英文文献很友好。</p>
+<p>有道翻译，简直神器，翻译的快捷方式应有尽有。</p>
+<h3 id="编程三部曲rstudio-windows-terminal-sublime-text-3"><a class="markdownIt-Anchor" href="#编程三部曲rstudio-windows-terminal-sublime-text-3">❡</a> 编程三部曲：rstudio、Windows terminal、sublime text 3</h3>
+<p>写点R还能跑点python，一个rstudio就够了。</p>
+<p>快捷好用的终端，体验就是不要再win+r cmd了。</p>
+<p>要读代码看配置，一个st3就解决。</p>
+<h3 id="博客三部曲onenote-typora-picgo"><a class="markdownIt-Anchor" href="#博客三部曲onenote-typora-picgo">❡</a> 博客三部曲：onenote、typora、picgo</h3>
+<p>要是战线比较长，就在OneNote慢慢写，要是一哈哈就可以码完或者突然才思泉涌，就直接打开typora开写。</p>
+<p>从任何地方复制，粘贴到OneNote，再从OneNote复制，打开typora粘贴，CV大法一气呵成，简直不要太爽！</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/">第二级</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/">生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    博客所有内容除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-NC-SA 4.0 协议</a> ，转载请<a href="https://www.sdiopid.top/about/" rel="nofollow noopener">@SDIOPID</a>呦！<img src="/img/lxh2.png" srcset="/img/loading.gif" lazyloadstyle="width:50px; height:50px;">
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/10/06/023-%E9%9A%8F%E7%AC%94-%E6%9C%89%E5%85%B3%E4%BA%BA%E7%9A%84%E4%B8%80%E7%94%9F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">023-随笔-有关人的一生</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/12/121.4_%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E5%92%8C%E6%95%B0%E6%8D%AE%E9%87%8D%E5%A1%91/">
+                        <span class="hidden-mobile">121.4_爬虫实战和数据重塑</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="text" style=" text-align:center;">在这里给我留言👇</div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Bma110/comment');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="/img/sxin.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://www.sdiopid.top" target="_blank" rel="nofollow noopener"><span>斯丢匹得</span></a> <i class="iconfont icon-love"></i> <a  target="_blank" rel="nofollow noopener"><span>SDIOPID</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

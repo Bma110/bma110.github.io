@@ -1,0 +1,67 @@
+
+h1 {
+    counter-reset: h2Counter h3Counter h4Counter h5Counter h6Counter !important;
+}
+
+h2 {
+    counter-reset: h3Counter h4Counter h5Counter h6Counter !important;
+    counter-increment: h2Counter !important;
+    color:#33a3dc;
+}
+
+h3 {
+    counter-reset: h4Counter h5Counter h6Counter !important;
+    counter-increment: h3Counter !important;
+    color:#228fbd;
+}
+
+h4 {
+    counter-reset: h5Counter h6Counter !important;
+    counter-increment: h4Counter !important;
+    color: #2468a2;
+}
+
+h5 {
+    counter-reset: h6Counter !important;
+    counter-increment: h5Counter !important;
+    color:#1b315e;
+}
+
+h6 {
+    counter-increment: h6Counter !important;
+
+}
+
+h2:after, h3:after, h4:after, h5:after, h6:after {
+    visibility: visible !important;
+}
+
+h2:after {
+    content: counter(h2Counter) "|" !important;
+    color:#33a3dc;
+}
+
+h3:after {
+    content: counter(h2Counter) "." counter(h3Counter) " " !important;
+    color:#228fbd;
+}
+
+h4:after {
+    content: counter(h2Counter) "." counter(h3Counter) "." counter(h4Counter) " " !important;
+    color: #2468a2;
+}
+
+h5:after {
+    content: counter(h2Counter) "." counter(h3Counter) "." counter(h4Counter) "." counter(h5Counter) !important;
+    color:#145b7d;
+}
+
+h6:after {
+    content: counter(h2Counter) "." counter(h3Counter) "." counter(h4Counter) "." counter(h5Counter) "." counter(h6Counter) !important;
+    color:#102b6a;
+}
+
+h2:before {
+    content: "☺"；
+}
+
