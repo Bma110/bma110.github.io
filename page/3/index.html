@@ -56,6 +56,193 @@
 
 
 <body>
+
+  <mytool>
+   <style type="text/css">
+      .mytool{
+        width: 18%;
+        height: 80%;
+        left: 5px;
+        bottom: 10px;
+        border-radius: 40px;
+        background: #aa2116;
+        overflow: auto;
+        z-index: 99;
+        float: left;
+        display: inline; 
+        position: fixed;
+        transition: transform 150ms ease-in; 
+        transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
+      }
+
+
+      .mytool:hover{
+        transform: translateX(0px)!important;
+        border-radius: 10px!important;   
+      }
+
+      .sid-bar-inner{
+        margin-right: 20px;
+      }
+
+      .sid-bar-inner-title{
+        background-color: #ffffff; 
+      }
+
+      .sid-bar-inner-poem{
+        margin: 1px;
+        flex-wrap: nowrap;
+        background-color: #ffffff;
+      }
+      .sid-bar-inner-poem {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .sidebar-quote-content {
+        writing-mode: vertical-lr;
+        cursor: pointer;
+        margin: 5px;
+        
+
+      }
+      .sidebar-quote-from {
+          writing-mode: vertical-lr;
+          margin: 5px;
+      }
+      .refresh{
+        text-align: center;
+        color: #ffffff;
+        background-color: #845538;
+        margin: 0px;
+        margin-bottom: 1px;
+        height: 100%
+        width:100%;
+      }
+      .play{
+        background-color: #aa2116;
+        z-index: 9999;
+        position: relative;
+        float: right;
+        display: inline;
+        height: 49px;
+        overflow: hidden;
+      }
+      .playingp{
+        margin-left: 0px;
+        width: 20px;
+        color: #ffffff;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: 16s wordsLoop linear infinite normal;
+        writing-mode: vertical-lr;
+        
+      }
+      .playing{
+        background-color:#845538;
+        z-index: 9999;
+        position: relative;
+        float: right;
+        display: inline;
+        height: 100%;
+        overflow: hidden;
+        
+
+      }
+      @keyframes wordsLoop {
+        0% {
+            transform: translateY(150px);
+            -webkit-transform: translateY(150px);
+         }
+        100% {
+            transform: translateY(-100%);
+            -webkit-transform: translateY(-100%);
+         }
+      }
+
+   </style> 
+   <script>
+    function refresh(){
+        var poem_part, poem_full;
+              const content = document.getElementById("SidebarQuoteContent");
+              const from = document.getElementById("SidebarQuoteFrom");
+              function toggleFull() {
+                  if (content.innerHTML == poem_part) {
+                      content.innerHTML = poem_full;
+                  } else {
+                      content.innerHTML = poem_part;
+                  }
+              }
+              jinrishici.load(function(result) {
+                  poem_part = result.data.content;
+                  content.innerText = poem_part;
+                  from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                      + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                  poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                  content.onclick = toggleFull;
+              });
+      }
+   </script>  
+   <script>
+     plp = function(){
+
+      const btncolor = document.getElementById("plpbtn");
+      
+      if(btncolor.className=="play"){
+          btncolor.className = "playing";
+          const contentpoem = document.getElementById("SidebarQuoteContent").innerText;
+          const btnp = document.getElementById("plpbtnp").innerText = contentpoem;
+          const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
+      }else if(btncolor.className=="playing"){
+          btncolor.className = "play";
+          const btnp = document.getElementById("plpbtnp").innerHTML ="<br/>";
+          const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px)) scale(1,calc(0.07))";
+
+      }
+      
+    }
+   </script>
+   <div>
+      <div class="mytool" id="mytool" >
+        <div class="play" style="width: 20px" id="plpbtn" onclick="plp();"><p id="plpbtnp" class="playingp"></p></div>
+        <div class="sid-bar-inner">
+          <div class="sid-bar-inner-title" >
+            <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
+          </div>
+          <div class="refresh" onclick="refresh()">
+            下一首
+          </div>
+          <div class="sid-bar-inner-poem">
+
+            <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
+            <p class="sidebar-quote-from" id="SidebarQuoteFrom">——宋代·赵师秀<br/>《约客》</p>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+            <script>
+                var poem_part, poem_full;
+                const content = document.getElementById("SidebarQuoteContent");
+                const from = document.getElementById("SidebarQuoteFrom");
+                function toggleFull() {
+                    if (content.innerHTML == poem_part) {
+                        content.innerHTML = poem_full;
+                    } else {
+                        content.innerHTML = poem_part;
+                    }
+                }
+                jinrishici.load(function(result) {
+                    poem_part = result.data.content;
+                    content.innerText = poem_part;
+                    from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                        + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                    poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                    content.onclick = toggleFull;
+                });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mytool>
+
   <header style="height: 100vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -170,7 +357,8 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
+
+      <div class="container nopadding-x-md" id="testmain">
         <div class="py-5" id="board"
           style=margin-top:0>
           
@@ -179,6 +367,77 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/05/05/231-%E9%9A%8F%E7%AC%94-ipad%E8%BD%AF%E4%BB%B6%E5%88%A9%E7%94%A8/" target="_self">
+          <img src="https://api.ixiaowai.cn/gqapi/gqapi.php" srcset="/img/loading.gif" lazyload alt="023-ipad软件利用">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/05/05/231-%E9%9A%8F%E7%AC%94-ipad%E8%BD%AF%E4%BB%B6%E5%88%A9%E7%94%A8/">023-ipad软件利用</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/05/05/231-%E9%9A%8F%E7%AC%94-ipad%E8%BD%AF%E4%BB%B6%E5%88%A9%E7%94%A8/">
+          
+          
+            
+          
+          ipad软件利用
+
+插件1：markdown插件
+
+
+2021年5月4日
+23:10
+❡ Anki：刷题背书工具（一）
+ANKI用来帮助你背诵那些简答题是十分实用的。它还可以用来帮助你背图片结构等等，那些需要反复记忆的小条条都可以利用anki记忆。
+最好熟悉anki的一些快捷键来提高你的使用效率。
+❡ 插件1：markdown插件
+在anki的编辑框中支持html语言，同时通过插件实现markdo
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-05 00:41" pubdate>
+              2021-05-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/">第二级</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/">生活</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/iPad%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/">iPad软件使用</a>
+            
+              <a href="/tags/%E5%8F%91%E5%B1%95%E7%94%9F%E4%BA%A7%E5%8A%9B/">发展生产力</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -910,63 +1169,6 @@ G - 复杂 脂蛋白、外膜、脂多糖
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/04/26/hello-world/" target="_self">
-          <img src="/img/favicon.png" srcset="/img/loading.gif" lazyload alt="郭渝怀的网络自留地">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/04/26/hello-world/">郭渝怀的网络自留地</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/04/26/hello-world/">
-          
-          
-            
-          
-          简介：Welcome to SDIOPID! This is my very first post.
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-04-26 22:27" pubdate>
-              2021-04-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%AC%AC%E4%B8%89%E7%BA%A7/">第三级</a>
-            
-              <a href="/categories/%E7%AC%AC%E4%B8%89%E7%BA%A7/%E5%BB%BA%E7%AB%99/">建站</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%BB%BA%E7%AB%99/">建站</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -1159,5 +1361,5 @@ G - 复杂 脂蛋白、外膜、脂多糖
 <script  src="/js/boot.js" ></script>
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

@@ -56,6 +56,193 @@
 
 
 <body>
+
+  <mytool>
+   <style type="text/css">
+      .mytool{
+        width: 18%;
+        height: 80%;
+        left: 5px;
+        bottom: 10px;
+        border-radius: 40px;
+        background: #aa2116;
+        overflow: auto;
+        z-index: 99;
+        float: left;
+        display: inline; 
+        position: fixed;
+        transition: transform 150ms ease-in; 
+        transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
+      }
+
+
+      .mytool:hover{
+        transform: translateX(0px)!important;
+        border-radius: 10px!important;   
+      }
+
+      .sid-bar-inner{
+        margin-right: 20px;
+      }
+
+      .sid-bar-inner-title{
+        background-color: #ffffff; 
+      }
+
+      .sid-bar-inner-poem{
+        margin: 1px;
+        flex-wrap: nowrap;
+        background-color: #ffffff;
+      }
+      .sid-bar-inner-poem {
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .sidebar-quote-content {
+        writing-mode: vertical-lr;
+        cursor: pointer;
+        margin: 5px;
+        
+
+      }
+      .sidebar-quote-from {
+          writing-mode: vertical-lr;
+          margin: 5px;
+      }
+      .refresh{
+        text-align: center;
+        color: #ffffff;
+        background-color: #845538;
+        margin: 0px;
+        margin-bottom: 1px;
+        height: 100%
+        width:100%;
+      }
+      .play{
+        background-color: #aa2116;
+        z-index: 9999;
+        position: relative;
+        float: right;
+        display: inline;
+        height: 49px;
+        overflow: hidden;
+      }
+      .playingp{
+        margin-left: 0px;
+        width: 20px;
+        color: #ffffff;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: 16s wordsLoop linear infinite normal;
+        writing-mode: vertical-lr;
+        
+      }
+      .playing{
+        background-color:#845538;
+        z-index: 9999;
+        position: relative;
+        float: right;
+        display: inline;
+        height: 100%;
+        overflow: hidden;
+        
+
+      }
+      @keyframes wordsLoop {
+        0% {
+            transform: translateY(150px);
+            -webkit-transform: translateY(150px);
+         }
+        100% {
+            transform: translateY(-100%);
+            -webkit-transform: translateY(-100%);
+         }
+      }
+
+   </style> 
+   <script>
+    function refresh(){
+        var poem_part, poem_full;
+              const content = document.getElementById("SidebarQuoteContent");
+              const from = document.getElementById("SidebarQuoteFrom");
+              function toggleFull() {
+                  if (content.innerHTML == poem_part) {
+                      content.innerHTML = poem_full;
+                  } else {
+                      content.innerHTML = poem_part;
+                  }
+              }
+              jinrishici.load(function(result) {
+                  poem_part = result.data.content;
+                  content.innerText = poem_part;
+                  from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                      + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                  poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                  content.onclick = toggleFull;
+              });
+      }
+   </script>  
+   <script>
+     plp = function(){
+
+      const btncolor = document.getElementById("plpbtn");
+      
+      if(btncolor.className=="play"){
+          btncolor.className = "playing";
+          const contentpoem = document.getElementById("SidebarQuoteContent").innerText;
+          const btnp = document.getElementById("plpbtnp").innerText = contentpoem;
+          const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
+      }else if(btncolor.className=="playing"){
+          btncolor.className = "play";
+          const btnp = document.getElementById("plpbtnp").innerHTML ="<br/>";
+          const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px)) scale(1,calc(0.07))";
+
+      }
+      
+    }
+   </script>
+   <div>
+      <div class="mytool" id="mytool" >
+        <div class="play" style="width: 20px" id="plpbtn" onclick="plp();"><p id="plpbtnp" class="playingp"></p></div>
+        <div class="sid-bar-inner">
+          <div class="sid-bar-inner-title" >
+            <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
+          </div>
+          <div class="refresh" onclick="refresh()">
+            下一首
+          </div>
+          <div class="sid-bar-inner-poem">
+
+            <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
+            <p class="sidebar-quote-from" id="SidebarQuoteFrom">——宋代·赵师秀<br/>《约客》</p>
+            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+            <script>
+                var poem_part, poem_full;
+                const content = document.getElementById("SidebarQuoteContent");
+                const from = document.getElementById("SidebarQuoteFrom");
+                function toggleFull() {
+                    if (content.innerHTML == poem_part) {
+                        content.innerHTML = poem_full;
+                    } else {
+                        content.innerHTML = poem_part;
+                    }
+                }
+                jinrishici.load(function(result) {
+                    poem_part = result.data.content;
+                    content.innerText = poem_part;
+                    from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                        + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                    poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                    content.onclick = toggleFull;
+                });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mytool>
+
   <header style="height: 78vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
@@ -170,7 +357,8 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
+
+      <div class="container nopadding-x-md" id="testmain">
         <div class="py-5" id="board"
           >
           
@@ -435,5 +623,5 @@
 <script  src="/js/boot.js" ></script>
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
