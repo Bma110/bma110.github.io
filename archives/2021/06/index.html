@@ -60,7 +60,7 @@
   <mytool>
    <style type="text/css">
       .mytool{
-        width: 18%;
+        width: fit-content;
         height: 80%;
         left: 5px;
         bottom: 10px;
@@ -74,11 +74,12 @@
         transition: transform 150ms ease-in; 
         transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
       }
-
-
       .mytool:hover{
         transform: translateX(0px)!important;
         border-radius: 10px!important;   
+      }
+      .mytool::-webkit-scrollbar {
+        width: 0;
       }
 
       .sid-bar-inner{
@@ -146,8 +147,6 @@
         display: inline;
         height: 100%;
         overflow: hidden;
-        
-
       }
       @keyframes wordsLoop {
         0% {
@@ -158,6 +157,17 @@
             transform: translateY(-100%);
             -webkit-transform: translateY(-100%);
          }
+      }
+      .todobar{
+        background-color: #845538;
+        text-align: center;
+        color: #ffffff;
+      }
+      .toduoption{
+        border: 1px solid #845538;
+        display:inline;
+        text-align: center;
+        color: #ffffff;
       }
 
    </style> 
@@ -178,7 +188,7 @@
                   content.innerText = poem_part;
                   from.innerHTML = '——' + result.data.origin.dynasty + '·'
                       + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                  poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                  poem_full = result.data.origin.content.join('<br/>');
                   content.onclick = toggleFull;
               });
       }
@@ -190,8 +200,8 @@
       
       if(btncolor.className=="play"){
           btncolor.className = "playing";
-          const contentpoem = document.getElementById("SidebarQuoteContent").innerText;
-          const btnp = document.getElementById("plpbtnp").innerText = contentpoem;
+          const contentpoem = document.getElementById("SidebarQuoteContent").innerHTML;
+          const btnp = document.getElementById("plpbtnp").innerHTML = contentpoem;
           const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
       }else if(btncolor.className=="playing"){
           btncolor.className = "play";
@@ -209,9 +219,27 @@
           <div class="sid-bar-inner-title" >
             <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
           </div>
+          <div>
+            <div class="todobar">
+              toDo
+            </div>
+            <div class="toduoption">
+              <a >複習</a>
+            </div>
+            <div class="toduoption">
+              <a>開發</a>
+            </div>
+            <div class="toduoption">
+              <a>測試</a>
+            </div>
+            <div class="toduoption">
+              <a>測試</a>
+            </div>
+          </div>
           <div class="refresh" onclick="refresh()">
             下一首
           </div>
+          
           <div class="sid-bar-inner-poem">
 
             <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
@@ -233,7 +261,7 @@
                     content.innerText = poem_part;
                     from.innerHTML = '——' + result.data.origin.dynasty + '·'
                         + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                    poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                    poem_full = result.data.origin.content.join('<br/>');
                     content.onclick = toggleFull;
                 });
             </script>
@@ -368,7 +396,7 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 35 篇文章</p>
+  <p class="h4">共计 37 篇文章</p>
   <hr>
   
   

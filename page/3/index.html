@@ -60,7 +60,7 @@
   <mytool>
    <style type="text/css">
       .mytool{
-        width: 18%;
+        width: fit-content;
         height: 80%;
         left: 5px;
         bottom: 10px;
@@ -74,11 +74,12 @@
         transition: transform 150ms ease-in; 
         transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
       }
-
-
       .mytool:hover{
         transform: translateX(0px)!important;
         border-radius: 10px!important;   
+      }
+      .mytool::-webkit-scrollbar {
+        width: 0;
       }
 
       .sid-bar-inner{
@@ -146,8 +147,6 @@
         display: inline;
         height: 100%;
         overflow: hidden;
-        
-
       }
       @keyframes wordsLoop {
         0% {
@@ -158,6 +157,17 @@
             transform: translateY(-100%);
             -webkit-transform: translateY(-100%);
          }
+      }
+      .todobar{
+        background-color: #845538;
+        text-align: center;
+        color: #ffffff;
+      }
+      .toduoption{
+        border: 1px solid #845538;
+        display:inline;
+        text-align: center;
+        color: #ffffff;
       }
 
    </style> 
@@ -178,7 +188,7 @@
                   content.innerText = poem_part;
                   from.innerHTML = '——' + result.data.origin.dynasty + '·'
                       + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                  poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                  poem_full = result.data.origin.content.join('<br/>');
                   content.onclick = toggleFull;
               });
       }
@@ -190,8 +200,8 @@
       
       if(btncolor.className=="play"){
           btncolor.className = "playing";
-          const contentpoem = document.getElementById("SidebarQuoteContent").innerText;
-          const btnp = document.getElementById("plpbtnp").innerText = contentpoem;
+          const contentpoem = document.getElementById("SidebarQuoteContent").innerHTML;
+          const btnp = document.getElementById("plpbtnp").innerHTML = contentpoem;
           const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
       }else if(btncolor.className=="playing"){
           btncolor.className = "play";
@@ -209,9 +219,27 @@
           <div class="sid-bar-inner-title" >
             <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
           </div>
+          <div>
+            <div class="todobar">
+              toDo
+            </div>
+            <div class="toduoption">
+              <a >複習</a>
+            </div>
+            <div class="toduoption">
+              <a>開發</a>
+            </div>
+            <div class="toduoption">
+              <a>測試</a>
+            </div>
+            <div class="toduoption">
+              <a>測試</a>
+            </div>
+          </div>
           <div class="refresh" onclick="refresh()">
             下一首
           </div>
+          
           <div class="sid-bar-inner-poem">
 
             <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
@@ -233,7 +261,7 @@
                     content.innerText = poem_part;
                     from.innerHTML = '——' + result.data.origin.dynasty + '·'
                         + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                    poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                    poem_full = result.data.origin.content.join('<br/>');
                     content.onclick = toggleFull;
                 });
             </script>
@@ -367,6 +395,120 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/06/07/231-essay-motherland-nature-beauty-crush/" target="_self">
+          <img src="https://api.ixiaowai.cn/gqapi/gqapi.php" srcset="/img/loading.gif" lazyload alt="231_睡前骚话——美">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/07/231-essay-motherland-nature-beauty-crush/">231_睡前骚话——美</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/07/231-essay-motherland-nature-beauty-crush/">
+          
+          
+            
+          
+          美，为什么会感到美。
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-07 22:12" pubdate>
+              2021-06-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/">第二级</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/">生活</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/">随笔</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9C%80%E8%BF%91/">最近</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/06/02/231-%E9%9A%8F%E7%AC%94-someday_typora%E5%92%8COneNote%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%93%E9%AA%8C%EF%BC%9A%E6%88%91%E8%BF%99%E6%A0%B7%E5%86%99%E5%8D%9A%E5%AE%A2/" target="_self">
+          <img src="https://api.ixiaowai.cn/gqapi/gqapi.php" srcset="/img/loading.gif" lazyload alt="someday_typora和OneNote的结合体验：我这样写博客">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/06/02/231-%E9%9A%8F%E7%AC%94-someday_typora%E5%92%8COneNote%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%93%E9%AA%8C%EF%BC%9A%E6%88%91%E8%BF%99%E6%A0%B7%E5%86%99%E5%8D%9A%E5%AE%A2/">someday_typora和OneNote的结合体验：我这样写博客</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/06/02/231-%E9%9A%8F%E7%AC%94-someday_typora%E5%92%8COneNote%E7%9A%84%E7%BB%93%E5%90%88%E4%BD%93%E9%AA%8C%EF%BC%9A%E6%88%91%E8%BF%99%E6%A0%B7%E5%86%99%E5%8D%9A%E5%AE%A2/">
+          
+          
+            
+          
+          excerpt
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-06-02 21:07" pubdate>
+              2021-06-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AC%AC%E4%B8%80%E7%BA%A7/">第一级</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%B8%80%E7%BA%A7/%E5%B7%A5%E4%BD%9C%E5%8F%B0/">工作台</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/new/">new</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -1102,78 +1244,11 @@ G - 复杂 脂蛋白、外膜、脂多糖
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/05/14/231-%E9%9A%8F%E7%AC%94-%E8%AE%B0%E5%BF%86%E7%9A%84%E6%A0%B9/" target="_self">
-          <img src="https://api.ixiaowai.cn/gqapi/gqapi.php" srcset="/img/loading.gif" lazyload alt="231-随笔-记忆的根">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/14/231-%E9%9A%8F%E7%AC%94-%E8%AE%B0%E5%BF%86%E7%9A%84%E6%A0%B9/">231-随笔-记忆的根</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/05/14/231-%E9%9A%8F%E7%AC%94-%E8%AE%B0%E5%BF%86%E7%9A%84%E6%A0%B9/">
-          
-          
-            
-          
-          使用anki前我的一点考虑
-2021年5月13日
-23:12
-❡ 记忆的根：根越多越牢靠，根越长越跳跃
-问题：如何更容易形成彼此的根？思维跳跃就是很远的知识间形成了根。
-❡ 《有关anki使用前的思考》
-从小到大所受的教育，还有许多知识的学习，都是依托于做题。anki很便利地提供了题的依托平台，并且能够按计划地进行复习。
-为什么要做题？我想这是我们自己通过十几年的身体力行已经得到了答案。做题是利用
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-14 16:21" pubdate>
-              2021-05-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/">第二级</a>
-            
-              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/">生活</a>
-            
-              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/">随笔</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
-            
-              <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

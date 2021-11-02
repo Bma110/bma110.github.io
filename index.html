@@ -60,7 +60,7 @@
   <mytool>
    <style type="text/css">
       .mytool{
-        width: 18%;
+        width: fit-content;
         height: 80%;
         left: 5px;
         bottom: 10px;
@@ -74,11 +74,12 @@
         transition: transform 150ms ease-in; 
         transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
       }
-
-
       .mytool:hover{
         transform: translateX(0px)!important;
         border-radius: 10px!important;   
+      }
+      .mytool::-webkit-scrollbar {
+        width: 0;
       }
 
       .sid-bar-inner{
@@ -146,8 +147,6 @@
         display: inline;
         height: 100%;
         overflow: hidden;
-        
-
       }
       @keyframes wordsLoop {
         0% {
@@ -158,6 +157,17 @@
             transform: translateY(-100%);
             -webkit-transform: translateY(-100%);
          }
+      }
+      .todobar{
+        background-color: #845538;
+        text-align: center;
+        color: #ffffff;
+      }
+      .toduoption{
+        border: 1px solid #845538;
+        display:inline;
+        text-align: center;
+        color: #ffffff;
       }
 
    </style> 
@@ -178,7 +188,7 @@
                   content.innerText = poem_part;
                   from.innerHTML = '——' + result.data.origin.dynasty + '·'
                       + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                  poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                  poem_full = result.data.origin.content.join('<br/>');
                   content.onclick = toggleFull;
               });
       }
@@ -190,8 +200,8 @@
       
       if(btncolor.className=="play"){
           btncolor.className = "playing";
-          const contentpoem = document.getElementById("SidebarQuoteContent").innerText;
-          const btnp = document.getElementById("plpbtnp").innerText = contentpoem;
+          const contentpoem = document.getElementById("SidebarQuoteContent").innerHTML;
+          const btnp = document.getElementById("plpbtnp").innerHTML = contentpoem;
           const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
       }else if(btncolor.className=="playing"){
           btncolor.className = "play";
@@ -209,9 +219,27 @@
           <div class="sid-bar-inner-title" >
             <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
           </div>
+          <div>
+            <div class="todobar">
+              toDo
+            </div>
+            <div class="toduoption">
+              <a >複習</a>
+            </div>
+            <div class="toduoption">
+              <a>開發</a>
+            </div>
+            <div class="toduoption">
+              <a>測試</a>
+            </div>
+            <div class="toduoption">
+              <a>測試</a>
+            </div>
+          </div>
           <div class="refresh" onclick="refresh()">
             下一首
           </div>
+          
           <div class="sid-bar-inner-poem">
 
             <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
@@ -233,7 +261,7 @@
                     content.innerText = poem_part;
                     from.innerHTML = '——' + result.data.origin.dynasty + '·'
                         + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                    poem_full = "&nbsp".repeat(8) + result.data.origin.content.join('<br/>' + "&nbsp".repeat(8));
+                    poem_full = result.data.origin.content.join('<br/>');
                     content.onclick = toggleFull;
                 });
             </script>
@@ -367,6 +395,211 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/02/121.7_%E7%97%85%E7%94%9F%E5%A4%8D%E4%B9%A0%E6%A6%82%E8%A6%81/" target="_self">
+          <img src="https://api.ixiaowai.cn/gqapi/gqapi.php" srcset="/img/loading.gif" lazyload alt="121.6_病生复习概要">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/02/121.7_%E7%97%85%E7%94%9F%E5%A4%8D%E4%B9%A0%E6%A6%82%E8%A6%81/">121.6_病生复习概要</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/02/121.7_%E7%97%85%E7%94%9F%E5%A4%8D%E4%B9%A0%E6%A6%82%E8%A6%81/">
+          
+          
+            
+          
+          
+❡ 总论
+绪论概论
+水盐电解质酸碱平衡
+缺氧发热应激
+再灌注休克DIC
+❡ 第一章：绪论概论
+❡ 第二章：水电解质
+
+水钠代谢
+钾代谢
+镁、钙代谢
+
+❡ 第三章：酸碱平衡
+
+
+基础知识
+
+
+代酸代碱
+
+
+呼酸呼碱
+
+
+平衡调节
+
+
+❡ 第四章：缺氧
+
+基础知识
+原因分类变化特点
+缺氧机体变化（功能代谢）
+
+❡ 第五章：发热
+
+机制
+功能代谢变化和防治
+
+❡ 第六章：应激
+硬背
+
+
+机制：应激的两
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-02 16:49" pubdate>
+              2021-11-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/">第二级</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/%E4%B8%93%E5%AD%A6/">专学</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/%E4%B8%93%E5%AD%A6/%E7%97%85%E7%94%9F/">病生</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%97%85%E7%94%9F%EF%BC%8C%E5%A4%8D%E4%B9%A0/">病生，复习</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/02/121.6_%E7%97%85%E7%90%86%E5%AD%A6%E5%A4%8D%E4%B9%A0%E6%A6%82%E8%A6%81/" target="_self">
+          <img src="https://api.ixiaowai.cn/gqapi/gqapi.php" srcset="/img/loading.gif" lazyload alt="121.6_病理学复习概要">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/02/121.6_%E7%97%85%E7%90%86%E5%AD%A6%E5%A4%8D%E4%B9%A0%E6%A6%82%E8%A6%81/">121.6_病理学复习概要</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/11/02/121.6_%E7%97%85%E7%90%86%E5%AD%A6%E5%A4%8D%E4%B9%A0%E6%A6%82%E8%A6%81/">
+          
+          
+            
+          
+          
+复习概要：
+总论+各论+图片
+
+总论
+
+概念
+
+第二章：细胞、组织的适应和损伤
+第三章：再生与修复
+第四章：局部血液循环障碍
+第五章：炎症
+第六章：肿瘤
+
+
+
+
+各论
+
+概念
+
+第一章：心血管系统
+第二章：呼吸系统疾病
+第三章：消化系统疾病
+第四章：泌尿系统疾病
+第五章：神经系统疾病
+第六章：传染病和深部真菌
+第七章：略掉的章节
+
+
+
+
+图片
+
+总论图片
+各论图片
+
+
+
+
+❡ 总论
+❡ 概念
+异
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-02 15:28" pubdate>
+              2021-11-02
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/">第二级</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/%E4%B8%93%E5%AD%A6/">专学</a>
+            
+              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/%E4%B8%93%E5%AD%A6/%E7%97%85%E7%90%86/">病理</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E7%97%85%E7%90%86/">病理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -1009,132 +1242,11 @@ For this is your business, to act well the given part; but to choose it, belongs
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/10/04/023-%E9%9A%8F%E7%AC%94-%E6%88%91%E7%9A%84Windows%EF%BC%9A%E7%9B%98%E7%AC%A6%E5%92%8C%E8%BD%AF%E4%BB%B6%E7%9A%84%E8%A7%84%E5%88%92/" target="_self">
-          <img src="https://api.ixiaowai.cn/gqapi/gqapi.php" srcset="/img/loading.gif" lazyload alt="023-随笔-我的Windows：硬盘空间光大还不够-盘符和软件的规划">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/10/04/023-%E9%9A%8F%E7%AC%94-%E6%88%91%E7%9A%84Windows%EF%BC%9A%E7%9B%98%E7%AC%A6%E5%92%8C%E8%BD%AF%E4%BB%B6%E7%9A%84%E8%A7%84%E5%88%92/">023-随笔-我的Windows：硬盘空间光大还不够-盘符和软件的规划</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/10/04/023-%E9%9A%8F%E7%AC%94-%E6%88%91%E7%9A%84Windows%EF%BC%9A%E7%9B%98%E7%AC%A6%E5%92%8C%E8%BD%AF%E4%BB%B6%E7%9A%84%E8%A7%84%E5%88%92/">
-          
-          
-            
-          
-          
-
-不得不承认，随着电脑使用时间的时间越来越长，大量的数据变得难以管理，尽管在使用过程中对文件的分来管理存在不断优化，但是我认为在电脑使用指出就应该建立起文件管理的意识。这对于后期的使用体验是有重大积极意义的。
-❡ 盘符与软件：那些不太去翻的文件夹
-对于一台只有五百多G的电脑来说，盘符无非D盘和C盘。得益于固态硬盘优越的读写能力，甚至许多电脑只分配了一个C盘。
-在C盘，随着软件的使用和安装软件数目
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-04 11:51" pubdate>
-              2021-10-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/">第二级</a>
-            
-              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/">生活</a>
-            
-              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E7%94%9F%E6%B4%BB/%E9%9A%8F%E7%AC%94/">随笔</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/09/12/121.4_%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E5%92%8C%E6%95%B0%E6%8D%AE%E9%87%8D%E5%A1%91/" target="_self">
-          <img src="/img/v2-0397aece131952dc21c1e2f2aa28d3a9_r.jpg" srcset="/img/loading.gif" lazyload alt="121.4_爬虫实战和数据重塑">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/09/12/121.4_%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E5%92%8C%E6%95%B0%E6%8D%AE%E9%87%8D%E5%A1%91/">121.4_爬虫实战和数据重塑</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/09/12/121.4_%E7%88%AC%E8%99%AB%E5%AE%9E%E6%88%98%E5%92%8C%E6%95%B0%E6%8D%AE%E9%87%8D%E5%A1%91/">
-          
-          
-            
-          
-          Here's something encrypted, password is required to continue reading.
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-09-12 14:30" pubdate>
-              2021-09-12
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/">第二级</a>
-            
-              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/">学习</a>
-            
-              <a href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/python/">python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/python/">python</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
