@@ -54,227 +54,11 @@
   <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
+<body id="main-part"  >
+  <main > 
 
-<body>
-
-  <mytool>
-   <style type="text/css">
-      .mytool{
-        width: fit-content;
-        height: 80%;
-        left: 5px;
-        bottom: 10px;
-        border-radius: 40px;
-        background: #aa2116;
-        overflow: auto;
-        z-index: 99;
-        float: left;
-        display: inline; 
-        position: fixed;
-        transition: transform 150ms ease-in; 
-        transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
-      }
-      .mytool:hover{
-        transform: translateX(0px)!important;
-        border-radius: 10px!important;   
-      }
-      .mytool::-webkit-scrollbar {
-        width: 0;
-      }
-
-      .sid-bar-inner{
-        margin-right: 20px;
-      }
-
-      .sid-bar-inner-title{
-        background-color: #ffffff; 
-      }
-
-      .sid-bar-inner-poem{
-        margin: 1px;
-        flex-wrap: nowrap;
-        background-color: #ffffff;
-      }
-      .sid-bar-inner-poem {
-        display: flex;
-        justify-content: space-evenly;
-      }
-      .sidebar-quote-content {
-        writing-mode: vertical-lr;
-        cursor: pointer;
-        margin: 5px;
-        
-
-      }
-      .sidebar-quote-from {
-          writing-mode: vertical-lr;
-          margin: 5px;
-      }
-      .refresh{
-        text-align: center;
-        color: #ffffff;
-        background-color: #845538;
-        margin: 0px;
-        margin-bottom: 1px;
-        height: 100%
-        width:100%;
-      }
-      .play{
-        background-color: #aa2116;
-        z-index: 9999;
-        position: relative;
-        float: right;
-        display: inline;
-        height: 49px;
-        overflow: hidden;
-      }
-      .playingp{
-        margin-left: 0px;
-        width: 20px;
-        color: #ffffff;
-        display: inline-block;
-        white-space: nowrap;
-        overflow: hidden;
-        animation: 16s wordsLoop linear infinite normal;
-        writing-mode: vertical-lr;
-        
-      }
-      .playing{
-        background-color:#845538;
-        z-index: 9999;
-        position: relative;
-        float: right;
-        display: inline;
-        height: 100%;
-        overflow: hidden;
-      }
-      @keyframes wordsLoop {
-        0% {
-            transform: translateY(150px);
-            -webkit-transform: translateY(150px);
-         }
-        100% {
-            transform: translateY(-100%);
-            -webkit-transform: translateY(-100%);
-         }
-      }
-      .todobar{
-        background-color: #845538;
-        text-align: center;
-        color: #ffffff;
-      }
-      .toduoption{
-        border: 1px solid #845538;
-        display:inline;
-        text-align: center;
-        color: #ffffff;
-      }
-
-   </style> 
-   <script>
-    function refresh(){
-        var poem_part, poem_full;
-              const content = document.getElementById("SidebarQuoteContent");
-              const from = document.getElementById("SidebarQuoteFrom");
-              function toggleFull() {
-                  if (content.innerHTML == poem_part) {
-                      content.innerHTML = poem_full;
-                  } else {
-                      content.innerHTML = poem_part;
-                  }
-              }
-              jinrishici.load(function(result) {
-                  poem_part = result.data.content;
-                  content.innerText = poem_part;
-                  from.innerHTML = '——' + result.data.origin.dynasty + '·'
-                      + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                  poem_full = result.data.origin.content.join('<br/>');
-                  content.onclick = toggleFull;
-              });
-      }
-   </script>  
-   <script>
-     plp = function(){
-
-      const btncolor = document.getElementById("plpbtn");
-      
-      if(btncolor.className=="play"){
-          btncolor.className = "playing";
-          const contentpoem = document.getElementById("SidebarQuoteContent").innerHTML;
-          const btnp = document.getElementById("plpbtnp").innerHTML = contentpoem;
-          const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
-      }else if(btncolor.className=="playing"){
-          btncolor.className = "play";
-          const btnp = document.getElementById("plpbtnp").innerHTML ="<br/>";
-          const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px)) scale(1,calc(0.07))";
-
-      }
-      
-    }
-   </script>
-   <div>
-      <div class="mytool" id="mytool" >
-        <div class="play" style="width: 20px" id="plpbtn" onclick="plp();"><p id="plpbtnp" class="playingp"></p></div>
-        <div class="sid-bar-inner">
-          <div class="sid-bar-inner-title" >
-            <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
-          </div>
-          <div>
-            <div class="todobar">
-              toDo
-            </div>
-            <div>
-              <div class="toduoption">
-                <a href="https://www.sdiopid.top/tags/%E5%A4%8D%E4%B9%A0/">複習</a>
-              </div>
-              <div class="toduoption">
-                <a href="https://www.sdiopid.top/tags/%E5%BC%80%E5%8F%91/">開發</a>
-              </div>
-              <div class="toduoption">
-                <a>測試</a>
-              </div>
-              <div class="toduoption">
-                <a>測試</a>
-              </div>
-            </div>
-          </div>
-          <div class="refresh" onclick="refresh()">
-            下一首
-          </div>
-          
-          <div class="sid-bar-inner-poem">
-
-            <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
-            <p class="sidebar-quote-from" id="SidebarQuoteFrom">——宋代·赵师秀<br/>《约客》</p>
-            <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-            <script>
-                var poem_part, poem_full;
-                const content = document.getElementById("SidebarQuoteContent");
-                const from = document.getElementById("SidebarQuoteFrom");
-                function toggleFull() {
-                    if (content.innerHTML == poem_part) {
-                        content.innerHTML = poem_full;
-                    } else {
-                        content.innerHTML = poem_part;
-                    }
-                }
-                jinrishici.load(function(result) {
-                    poem_part = result.data.content;
-                    content.innerText = poem_part;
-                    from.innerHTML = '——' + result.data.origin.dynasty + '·'
-                        + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                    poem_full = result.data.origin.content.join('<br/>');
-                    content.onclick = toggleFull;
-                });
-            </script>
-          </div>
-        </div>
-      </div>
-    </div>
-  </mytool>
-
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+    <header style="height: 100vh;">
+      <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
        href="/">&nbsp;<strong>SDIOPID</strong>&nbsp;</a>
@@ -366,52 +150,52 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/b.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="一些文章被我打上了标签">
+      <div class="banner" id="banner" parallax=true
+          style="background: url('/img/b.jpg') no-repeat center center;
+            background-size: cover;">
+        <div class="full-bg-img">
+          <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+            <div class="page-header text-center fade-in-up">
+              <span class="h2" id="subtitle" title="一些文章被我打上了标签">
+                
+              </span>
+
               
-            </span>
+            </div>
 
             
           </div>
-
-          
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    
+    <main>
+      
 
-      <div class="container nopadding-x-md" id="testmain">
-        <div class="py-5" id="board"
-          style=margin-top:0>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+        <div class="container nopadding-x-md" id="testmain">
+          <div class="py-5" id="board"
+            style=margin-top:0>
+            
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-md-10 m-auto">
+                  
 
 <div class="text-center tagcloud">
   <a href="/tags/css/" style="font-size: 15px; color: #bbe">css</a> <a href="/tags/iPad%E8%BD%AF%E4%BB%B6%E4%BD%BF%E7%94%A8/" style="font-size: 15px; color: #bbe">iPad软件使用</a> <a href="/tags/markdown/" style="font-size: 15px; color: #bbe">markdown</a> <a href="/tags/new/" style="font-size: 18.75px; color: #99abe0">new</a> <a href="/tags/pass/" style="font-size: 15px; color: #bbe">pass</a> <a href="/tags/python/" style="font-size: 26.25px; color: #558ac5">python</a> <a href="/tags/%E4%BC%A4%E5%90%8E%E5%B1%80%E9%83%A8%E5%A4%84%E7%90%86/" style="font-size: 15px; color: #bbe">伤后局部处理</a> <a href="/tags/%E5%8C%BB%E5%AD%A6%E4%BC%A6%E7%90%86/" style="font-size: 15px; color: #bbe">医学伦理</a> <a href="/tags/%E5%8F%91%E5%B1%95%E7%94%9F%E4%BA%A7%E5%8A%9B/" style="font-size: 15px; color: #bbe">发展生产力</a> <a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 18.75px; color: #99abe0">复习</a> <a href="/tags/%E5%A4%96%E8%84%91%E5%BB%BA%E8%AE%BE/" style="font-size: 15px; color: #bbe">外脑建设</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 18.75px; color: #99abe0">学习</a> <a href="/tags/%E5%BB%BA%E7%AB%99/" style="font-size: 18.75px; color: #99abe0">建站</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 15px; color: #bbe">开发</a> <a href="/tags/%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86/" style="font-size: 15px; color: #bbe">文献管理</a> <a href="/tags/%E6%9C%80%E8%BF%91/" style="font-size: 22.5px; color: #779bd3">最近</a> <a href="/tags/%E6%B5%8B%E8%AF%84/" style="font-size: 15px; color: #bbe">测评</a> <a href="/tags/%E7%97%85%E5%8E%9F%E5%AD%A6/" style="font-size: 18.75px; color: #99abe0">病原学</a> <a href="/tags/%E7%97%85%E7%90%86/" style="font-size: 15px; color: #bbe">病理</a> <a href="/tags/%E7%97%85%E7%94%9F/" style="font-size: 15px; color: #bbe">病生</a> <a href="/tags/%E7%A4%BE%E4%BC%9A%E5%8C%BB%E5%AD%A6/" style="font-size: 15px; color: #bbe">社会医学</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 30px; color: #337ab7">随笔</a>
 </div>
 
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    
+      
 
-    
+      
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
@@ -432,11 +216,12 @@
     </div>
   </div>
 </div>
-    
+      
 
-    
+      
+    </main>
+
   </main>
-
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
      <a href="https://www.sdiopid.top" target="_blank" rel="nofollow noopener"><span>斯丢匹得</span></a> <i class="iconfont icon-love"></i> <a  target="_blank" rel="nofollow noopener"><span>SDIOPID</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
@@ -584,4 +369,246 @@
 
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+<mytool>
+  <style type="text/css">
+     .mytool{
+       width: fit-content;
+       height: 80%;
+       left: 5px;
+       bottom: 10px;
+       border-radius: 40px;
+       background: #aa2116;
+       overflow: auto;
+       z-index: 99;
+       float: left;
+       display: inline; 
+       position: fixed;
+       transition: transform 150ms ease-in; 
+       transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
+     }
+     .mytool:hover{
+       transform: translateX(0px)!important;
+       border-radius: 10px!important;   
+     }
+     .mytool::-webkit-scrollbar {
+       width: 0;
+     }
+
+     .sid-bar-inner{
+       margin-right: 20px;
+     }
+
+     .sid-bar-inner-title{
+       background-color: #ffffff; 
+     }
+
+     .sid-bar-inner-poem{
+       margin: 1px;
+       flex-wrap: nowrap;
+       background-color: #ffffff;
+     }
+     .sid-bar-inner-poem {
+       display: flex;
+       justify-content: space-evenly;
+     }
+     .sidebar-quote-content {
+       writing-mode: vertical-lr;
+       cursor: pointer;
+       margin: 5px;
+       
+
+     }
+     .sidebar-quote-from {
+         writing-mode: vertical-lr;
+         margin: 5px;
+     }
+     .refresh{
+       text-align: center;
+       color: #ffffff;
+       background-color: #845538;
+       margin: 0px;
+       margin-bottom: 1px;
+       height: 100%
+       width:100%;
+     }
+     .play{
+       background-color: #aa2116;
+       z-index: 9999;
+       position: relative;
+       float: right;
+       display: inline;
+       height: 49px;
+       overflow: hidden;
+     }
+     .playingp{
+       margin-left: 0px;
+       width: 20px;
+       color: #ffffff;
+       display: inline-block;
+       white-space: nowrap;
+       overflow: hidden;
+       animation: 16s wordsLoop linear infinite normal;
+       writing-mode: vertical-lr;
+       
+     }
+     .playing{
+       background-color:#845538;
+       z-index: 9999;
+       position: relative;
+       float: right;
+       display: inline;
+       height: 100%;
+       overflow: hidden;
+     }
+     .playing br{
+       display: none;
+     }
+     @keyframes wordsLoop {
+       0% {
+           transform: translateY(150px);
+           -webkit-transform: translateY(150px);
+        }
+       100% {
+           transform: translateY(-100%);
+           -webkit-transform: translateY(-100%);
+        }
+     }
+     .todobar{
+       background-color: #845538;
+       text-align: center;
+       color: #ffffff;
+     }
+     .toduoption{
+       border: 1px solid #845538;
+       display:inline;
+       text-align: center;
+       color: #ffffff;
+     }
+
+  </style> 
+  <script src="https://cdn.bootcdn.net/ajax/libs/Pjax-Standalone/0.6.0/pjax-standalone.js"></script>
+  <script>
+    var pjax = new Pjax({
+      selectors: [
+        "title",
+        "meta[name=description]",
+        ".the-header",
+        ".the-content",
+        ".the-sidebar",
+      ]
+    })
+  </script>
+  <script>
+   function refresh(){
+       var poem_part, poem_full;
+             const content = document.getElementById("SidebarQuoteContent");
+             const from = document.getElementById("SidebarQuoteFrom");
+             function toggleFull() {
+                 if (content.innerHTML == poem_part) {
+                     content.innerHTML = poem_full;
+                 } else {
+                     content.innerHTML = poem_part;
+                 }
+             }
+             jinrishici.load(function(result) {
+                 poem_part = result.data.content;
+                 content.innerText = poem_part;
+                 from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                     + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                 poem_full = result.data.origin.content.join('<br/>');
+                 content.onclick = toggleFull;
+             });
+     }
+  </script>  
+  <script>
+    plp = function(){
+
+     const btncolor = document.getElementById("plpbtn");
+     
+     if(btncolor.className=="play"){
+         btncolor.className = "playing";
+         var poem_part, poem_full;
+         const content = document.getElementById("SidebarQuoteContent");
+         const from = document.getElementById("SidebarQuoteFrom");
+         const pfrom = from.innerHTML;    
+         const contentpoem = document.getElementById("SidebarQuoteContent").innerHTML;
+         const ddcontentpoem = contentpoem + pfrom; 
+         const dcontentpoem = ddcontentpoem.replace(/<br\/>/g, "");
+             var lenthp = dcontentpoem.length;
+             lenthp = parseInt(lenthp/1.6);
+             lenthp = lenthp+"s";
+             const btnpppl = document.getElementById("plpbtnp").style.animation = lenthp+" wordsLoop linear infinite normal";
+             console.log("done");
+         const btnp = document.getElementById("plpbtnp").innerHTML = dcontentpoem;
+         const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
+     }else if(btncolor.className=="playing"){
+         btncolor.className = "play";
+         const btnp = document.getElementById("plpbtnp").innerHTML ="<br/>";
+         const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px)) scale(1,calc(0.07))";
+
+     }
+     
+   }
+  </script>
+  <div>
+     <div class="mytool" id="mytool" >
+       <div class="play" style="width: 20px" id="plpbtn" onclick="plp();"><p id="plpbtnp" class="playingp"></p></div>
+       <div class="sid-bar-inner">
+         <div class="sid-bar-inner-title" >
+           <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
+         </div>
+         <div>
+           <div class="todobar">
+             toDo
+           </div>
+           <div>
+             <div class="toduoption">
+               <a href="https://www.sdiopid.top/tags/%E5%A4%8D%E4%B9%A0/">複習</a>
+             </div>
+             <div class="toduoption">
+               <a href="https://www.sdiopid.top/tags/%E5%BC%80%E5%8F%91/">開發</a>
+             </div>
+             <div class="toduoption">
+               <a>測試</a>
+             </div>
+             <div class="toduoption">
+               <a>測試</a>
+             </div>
+           </div>
+         </div>
+         <div class="refresh" onclick="refresh()">
+           下一首
+         </div>
+         
+         <div class="sid-bar-inner-poem">
+
+           <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
+           <p class="sidebar-quote-from" id="SidebarQuoteFrom">——宋代·赵师秀<br/>《约客》</p>
+           <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+           <script>
+               var poem_part, poem_full;
+               const content = document.getElementById("SidebarQuoteContent");
+               const from = document.getElementById("SidebarQuoteFrom");
+               function toggleFull() {
+                   if (content.innerHTML == poem_part) {
+                       content.innerHTML = poem_full;
+                   } else {
+                       content.innerHTML = poem_part;
+                   }
+               }
+               jinrishici.load(function(result) {
+                   poem_part = result.data.content;
+                   content.innerText = poem_part;
+                   from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                       + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                   poem_full = result.data.origin.content.join('<br/>');
+                   content.onclick = toggleFull;
+               });
+           </script>
+         </div>
+       </div>
+     </div>
+   </div>
+ </mytool>
 </html>
