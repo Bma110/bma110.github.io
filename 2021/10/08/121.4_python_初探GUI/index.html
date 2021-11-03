@@ -9,6 +9,11 @@
   <meta charset="UTF-8">
   <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
   <link rel="icon" href="/img/favicon.png">
+  <style>
+    a:link {
+        color: #696969;
+      }
+  </style>
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -70,10 +75,10 @@
   <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
-<body id="main-part"  >
-  <main > 
+<body>
+  <main> 
 
-    <header style="height: 70vh;">
+    <header id="main-part" class="header" style="height: 70vh;">
       <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -166,6 +171,7 @@
   </div>
 </nav>
 
+      <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
       <div class="banner" id="banner" parallax=true
           style="background: url('https://api.yimian.xyz/img?type=wallpaper') no-repeat center center;
             background-size: cover;">
@@ -183,49 +189,51 @@
       <i class="iconfont icon-author" aria-hidden="true"></i>
       Yuhuai Guo
     </span>
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-08 00:39" pubdate>
-        2021年10月8日 凌晨
-      </time>
-    </span>
-  
+    
+      
+        <span class="post-meta">
+          <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+          <time datetime="2021-10-08 00:39" pubdate>
+            2021年10月8日 凌晨
+          </time>
+        </span>
+        
 </div>
 
 <div class="mt-1">
   
     
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      1k 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      12
-       分钟
-    </span>
-  
-
-  
-  
-    
-      <!-- 不蒜子统计文章PV -->
-      <span id="busuanzi_container_page_pv" style="display: none">
-        <i class="iconfont icon-eye" aria-hidden="true"></i>
-        <span id="busuanzi_value_page_pv"></span> 次
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1k
+             字
       </span>
-    
-  
-</div>
+      
 
+        
+          
+            <span class="post-meta mr-2">
+              <i class="iconfont icon-clock-fill"></i>
+              
+                
+                  12
+                     分钟
+            </span>
+            
+
+              
+                
+                  
+                      <!-- 不蒜子统计文章PV -->
+                      <span id="busuanzi_container_page_pv" style="display: none">
+                        <i class="iconfont icon-eye" aria-hidden="true"></i>
+                        <span id="busuanzi_value_page_pv"></span>
+                           次
+                      </span>
+                      
+                        
+</div>
               
             </div>
 
@@ -235,7 +243,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-part">
       
         
 
@@ -468,9 +476,10 @@ GUI-tkinter
       
 
       
-    </main>
-
+   </main>
+      
   </main>
+
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
      <a href="https://www.sdiopid.top" target="_blank" rel="nofollow noopener"><span>斯丢匹得</span></a> <i class="iconfont icon-love"></i> <a  target="_blank" rel="nofollow noopener"><span>SDIOPID</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
@@ -504,6 +513,302 @@ GUI-tkinter
   
 
   
+  
+<mytool>
+  <style type="text/css">
+     .mytool{
+       width: fit-content;
+       height: 80%;
+       left: 5px;
+       bottom: 10px;
+       border-radius: 40px;
+       background: #aa2116;
+       overflow: auto;
+       z-index: 99;
+       float: left;
+       display: inline; 
+       position: fixed;
+       transition: transform 150ms ease-in; 
+       transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
+     }
+     .mytool:hover{
+       transform: translateX(0px)!important;
+       border-radius: 10px!important;   
+     }
+     .mytool::-webkit-scrollbar {
+       width: 0;
+     }
+
+     .sid-bar-inner{
+       margin-right: 20px;
+     }
+
+     .sid-bar-inner-title{
+       background-color: #ffffff; 
+     }
+
+     .sid-bar-inner-poem{
+       margin: 1px;
+       flex-wrap: nowrap;
+       background-color: #ffffff;
+     }
+     .sid-bar-inner-poem {
+       display: flex;
+       justify-content: space-evenly;
+     }
+     .sidebar-quote-content {
+       writing-mode: vertical-lr;
+       cursor: pointer;
+       margin: 5px;
+       
+
+     }
+     .sidebar-quote-from {
+         writing-mode: vertical-lr;
+         margin: 5px;
+     }
+     .refresh{
+       text-align: center;
+       color: #ffffff;
+       background-color: #845538;
+       margin: 0px;
+       margin-bottom: 1px;
+       height: 100%
+       width:100%;
+     }
+     .play{
+       background-color: #aa2116;
+       z-index: 9999;
+       position: relative;
+       float: right;
+       display: inline;
+       height: 49px;
+       overflow: hidden;
+     }
+     .playingp{
+       margin-left: 0px;
+       width: 20px;
+       color: #ffffff;
+       display: inline-block;
+       white-space: nowrap;
+       overflow: hidden;
+       animation: 16s wordsLoop linear infinite normal;
+       writing-mode: vertical-lr;
+       
+     }
+     .playing{
+       background-color:#845538;
+       z-index: 9999;
+       position: relative;
+       float: right;
+       display: inline;
+       height: 100%;
+       overflow: hidden;
+     }
+     .playing br{
+       display: none;
+     }
+     @keyframes wordsLoop {
+       0% {
+           transform: translateY(150px);
+           -webkit-transform: translateY(150px);
+        }
+       100% {
+           transform: translateY(-100%);
+           -webkit-transform: translateY(-100%);
+        }
+     }
+     .todobar{
+       background-color: #845538;
+       text-align: center;
+       color: #ffffff;
+     }
+     .toduoption{
+       border: 1px solid #845538;
+       display:inline;
+       text-align: center;
+       color: #ffffff;
+     }
+
+  </style> 
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://tanyaodan.com/wp-includes/js/jquery.pjax.js">$(document).pjax('a[target!=_blank]', ['#main-part'], {fragment:['#main-part'], timeout:8000});
+  </script>
+  <script>
+   function refresh(){
+       var poem_part, poem_full;
+             const content = document.getElementById("SidebarQuoteContent");
+             const from = document.getElementById("SidebarQuoteFrom");
+             function toggleFull() {
+                 if (content.innerHTML == poem_part) {
+                     content.innerHTML = poem_full;
+                 } else {
+                     content.innerHTML = poem_part;
+                 }
+             }
+             jinrishici.load(function(result) {
+                 poem_part = result.data.content;
+                 content.innerText = poem_part;
+                 from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                     + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                 poem_full = result.data.origin.content.join('<br/>');
+                 content.onclick = toggleFull;
+             });
+     }
+  </script>  
+  <script>
+    var text;
+    plp = function(){
+
+     const btncolor = document.getElementById("plpbtn");
+     
+     if(btncolor.className=="play"){
+         btncolor.className = "playing";
+         var poem_part, poem_full;
+         const content = document.getElementById("SidebarQuoteContent");
+         const from = document.getElementById("SidebarQuoteFrom");
+         const pfrom = from.innerHTML;    
+         const contentpoem = document.getElementById("SidebarQuoteContent").innerHTML;
+         const ddcontentpoem = contentpoem + pfrom; 
+         const dcontentpoem = ddcontentpoem.replace(/<br\/>/g, "");
+             var lenthp = dcontentpoem.length;
+             lenthp = parseInt(lenthp/1.6);
+             lenthp = lenthp+"s";
+             const btnpppl = document.getElementById("plpbtnp").style.animation = lenthp+" wordsLoop linear infinite normal";
+             console.log("poemshowdone&dcontentpoemvalued");
+             text = dcontentpoem;
+         const btnp = document.getElementById("plpbtnp").innerHTML = dcontentpoem;
+         const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
+     }else if(btncolor.className=="playing"){
+         btncolor.className = "play";
+         const btnp = document.getElementById("plpbtnp").innerHTML ="<br/>";
+         const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px)) scale(1,calc(0.07))";
+
+     }
+     
+   }
+
+   var audioArray = [];
+   var mp3 = "";
+   console.log(text)
+   function GetAudioArray(){
+              //长度判断 这个接口有长度限制 其次get请求也有长度限制，因此这里做分段处理 用500 个长度我觉得是比较好的了。
+        const textlength = text.length;
+        if (textlength > 500) {
+    
+                let list = group(text, 500);
+                list.map(content => {
+                  console.log("dawubail");
+                  //audioArray.push("http://tts.baidu.com/text2audio?cuid=baiduid&lan=zh&ctp=1&pdt=311&tex=" + content);
+                  //console.log(audioArray);
+                  var utterThis = new SpeechSynthesisUtterance(text);
+
+speechSynthesis.speak(utterThis);
+                });
+       } else {
+                console.log("xiaowubai1");
+                //audioArray.push("http://tts.baidu.com/text2audio?cuid=baiduid&lan=zh&ctp=1&pdt=311&tex=" + text);
+                //console.log(audioArray);
+               // return audioArray
+               var utterThis = new SpeechSynthesisUtterance(text);
+               utterThis.rate=0.6;
+               utterThis.pitch=1.4;
+speechSynthesis.speak(utterThis);
+       }
+   }
+
+        //字符串分组
+        function group(str, len) {
+          var r = [];
+          function doGroup(s) {
+            if (!s) return;
+            r.push(s.substr(0, len));
+            s = s.substr(len);
+            doGroup(s)
+          }
+          doGroup(str);
+          return r;
+        }
+    
+        //播放函数
+        function PalyAudio(type) {
+    
+          if (type == 1) {
+            GetAudioArray();
+           // ForPalyAudio(0);
+          } else if (type == 2) {
+    
+            //停止
+            window.speechSynthesis.pause();
+          } else if(type == 3){
+            window.speechSynthesis.resume();
+          }else{
+            alert("错误的类型");
+          }
+        }
+    console.log(audioArray);
+
+  </script>
+  <div>
+     <div class="mytool" id="mytool" >
+       <div class="play" style="width: 20px" id="plpbtn" onclick="plp();"><p id="plpbtnp" class="playingp"></p></div>
+       <div class="sid-bar-inner">
+         <div class="sid-bar-inner-title" >
+           <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
+         </div>
+         <div>
+           <div class="todobar">
+             toDo
+           </div>
+           <div>
+             <div class="toduoption">
+               <a href="https://www.sdiopid.top/tags/%E5%A4%8D%E4%B9%A0/">複習</a>
+             </div>
+             <div class="toduoption">
+               <a href="https://www.sdiopid.top/tags/%E5%BC%80%E5%8F%91/">開發</a>
+             </div>
+             <div class="toduoption">
+              <div class="toduoption" onclick="PalyAudio(1)">播放</div><div class="toduoption" onclick="PalyAudio(2)">停止</div><div class="toduoption" onclick="PalyAudio(3)">继续</div>
+             </div>
+             <div class="toduoption">
+               <a>測試</a>
+             </div>
+           </div>
+         </div>
+         <div class="refresh" onclick="refresh()">
+           下一首
+         </div>
+         
+         <div class="sid-bar-inner-poem">
+
+           <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
+           <p class="sidebar-quote-from" id="SidebarQuoteFrom">——宋代·赵师秀<br/>《约客》</p>
+           <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+           <script>
+               var poem_part, poem_full;
+               const content = document.getElementById("SidebarQuoteContent");
+               const from = document.getElementById("SidebarQuoteFrom");
+               function toggleFull() {
+                   if (content.innerHTML == poem_part) {
+                       content.innerHTML = poem_full;
+                   } else {
+                       content.innerHTML = poem_part;
+                   }
+               }
+               jinrishici.load(function(result) {
+                   poem_part = result.data.content;
+                   content.innerText = poem_part;
+                   from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                       + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                   poem_full = result.data.origin.content.join('<br/>');
+                   content.onclick = toggleFull;
+               });
+           </script>
+         </div>
+       </div>
+     </div>
+   </div>
+ </mytool>
 </footer>
 
 
@@ -623,234 +928,4 @@ GUI-tkinter
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
-<mytool>
-  <style type="text/css">
-     .mytool{
-       width: fit-content;
-       height: 80%;
-       left: 5px;
-       bottom: 10px;
-       border-radius: 40px;
-       background: #aa2116;
-       overflow: auto;
-       z-index: 99;
-       float: left;
-       display: inline; 
-       position: fixed;
-       transition: transform 150ms ease-in; 
-       transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
-     }
-     .mytool:hover{
-       transform: translateX(0px)!important;
-       border-radius: 10px!important;   
-     }
-     .mytool::-webkit-scrollbar {
-       width: 0;
-     }
-
-     .sid-bar-inner{
-       margin-right: 20px;
-     }
-
-     .sid-bar-inner-title{
-       background-color: #ffffff; 
-     }
-
-     .sid-bar-inner-poem{
-       margin: 1px;
-       flex-wrap: nowrap;
-       background-color: #ffffff;
-     }
-     .sid-bar-inner-poem {
-       display: flex;
-       justify-content: space-evenly;
-     }
-     .sidebar-quote-content {
-       writing-mode: vertical-lr;
-       cursor: pointer;
-       margin: 5px;
-       
-
-     }
-     .sidebar-quote-from {
-         writing-mode: vertical-lr;
-         margin: 5px;
-     }
-     .refresh{
-       text-align: center;
-       color: #ffffff;
-       background-color: #845538;
-       margin: 0px;
-       margin-bottom: 1px;
-       height: 100%
-       width:100%;
-     }
-     .play{
-       background-color: #aa2116;
-       z-index: 9999;
-       position: relative;
-       float: right;
-       display: inline;
-       height: 49px;
-       overflow: hidden;
-     }
-     .playingp{
-       margin-left: 0px;
-       width: 20px;
-       color: #ffffff;
-       display: inline-block;
-       white-space: nowrap;
-       overflow: hidden;
-       animation: 16s wordsLoop linear infinite normal;
-       writing-mode: vertical-lr;
-       
-     }
-     .playing{
-       background-color:#845538;
-       z-index: 9999;
-       position: relative;
-       float: right;
-       display: inline;
-       height: 100%;
-       overflow: hidden;
-     }
-     .playing br{
-       display: none;
-     }
-     @keyframes wordsLoop {
-       0% {
-           transform: translateY(150px);
-           -webkit-transform: translateY(150px);
-        }
-       100% {
-           transform: translateY(-100%);
-           -webkit-transform: translateY(-100%);
-        }
-     }
-     .todobar{
-       background-color: #845538;
-       text-align: center;
-       color: #ffffff;
-     }
-     .toduoption{
-       border: 1px solid #845538;
-       display:inline;
-       text-align: center;
-       color: #ffffff;
-     }
-
-  </style> 
-  
-  <script>
-   function refresh(){
-       var poem_part, poem_full;
-             const content = document.getElementById("SidebarQuoteContent");
-             const from = document.getElementById("SidebarQuoteFrom");
-             function toggleFull() {
-                 if (content.innerHTML == poem_part) {
-                     content.innerHTML = poem_full;
-                 } else {
-                     content.innerHTML = poem_part;
-                 }
-             }
-             jinrishici.load(function(result) {
-                 poem_part = result.data.content;
-                 content.innerText = poem_part;
-                 from.innerHTML = '——' + result.data.origin.dynasty + '·'
-                     + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                 poem_full = result.data.origin.content.join('<br/>');
-                 content.onclick = toggleFull;
-             });
-     }
-  </script>  
-  <script>
-    plp = function(){
-
-     const btncolor = document.getElementById("plpbtn");
-     
-     if(btncolor.className=="play"){
-         btncolor.className = "playing";
-         var poem_part, poem_full;
-         const content = document.getElementById("SidebarQuoteContent");
-         const from = document.getElementById("SidebarQuoteFrom");
-         const pfrom = from.innerHTML;    
-         const contentpoem = document.getElementById("SidebarQuoteContent").innerHTML;
-         const ddcontentpoem = contentpoem + pfrom; 
-         const dcontentpoem = ddcontentpoem.replace(/<br\/>/g, "");
-             var lenthp = dcontentpoem.length;
-             lenthp = parseInt(lenthp/1.6);
-             lenthp = lenthp+"s";
-             const btnpppl = document.getElementById("plpbtnp").style.animation = lenthp+" wordsLoop linear infinite normal";
-             console.log("done");
-         const btnp = document.getElementById("plpbtnp").innerHTML = dcontentpoem;
-         const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
-     }else if(btncolor.className=="playing"){
-         btncolor.className = "play";
-         const btnp = document.getElementById("plpbtnp").innerHTML ="<br/>";
-         const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px)) scale(1,calc(0.07))";
-
-     }
-     
-   }
-  </script>
-  <div>
-     <div class="mytool" id="mytool" >
-       <div class="play" style="width: 20px" id="plpbtn" onclick="plp();"><p id="plpbtnp" class="playingp"></p></div>
-       <div class="sid-bar-inner">
-         <div class="sid-bar-inner-title" >
-           <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
-         </div>
-         <div>
-           <div class="todobar">
-             toDo
-           </div>
-           <div>
-             <div class="toduoption">
-               <a href="https://www.sdiopid.top/tags/%E5%A4%8D%E4%B9%A0/">複習</a>
-             </div>
-             <div class="toduoption">
-               <a href="https://www.sdiopid.top/tags/%E5%BC%80%E5%8F%91/">開發</a>
-             </div>
-             <div class="toduoption">
-               <a>測試</a>
-             </div>
-             <div class="toduoption">
-               <a>測試</a>
-             </div>
-           </div>
-         </div>
-         <div class="refresh" onclick="refresh()">
-           下一首
-         </div>
-         
-         <div class="sid-bar-inner-poem">
-
-           <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
-           <p class="sidebar-quote-from" id="SidebarQuoteFrom">——宋代·赵师秀<br/>《约客》</p>
-           <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-           <script>
-               var poem_part, poem_full;
-               const content = document.getElementById("SidebarQuoteContent");
-               const from = document.getElementById("SidebarQuoteFrom");
-               function toggleFull() {
-                   if (content.innerHTML == poem_part) {
-                       content.innerHTML = poem_full;
-                   } else {
-                       content.innerHTML = poem_part;
-                   }
-               }
-               jinrishici.load(function(result) {
-                   poem_part = result.data.content;
-                   content.innerText = poem_part;
-                   from.innerHTML = '——' + result.data.origin.dynasty + '·'
-                       + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
-                   poem_full = result.data.origin.content.join('<br/>');
-                   content.onclick = toggleFull;
-               });
-           </script>
-         </div>
-       </div>
-     </div>
-   </div>
- </mytool>
 </html>
