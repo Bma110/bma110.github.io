@@ -552,11 +552,23 @@
        text-align: center;
        color: #ffffff;
      }
+     .todoption{
+       border: 1px solid #845538;
+       display:inline;
+       text-align: center;
+       color: #ffffff;
+     }
      .toduoption{
        border: 1px solid #845538;
        display:inline;
        text-align: center;
        color: #ffffff;
+     }
+     .toduoptiona{
+       border: 1px solid #ffffff;
+       display:inline;
+       text-align: center;
+       color: #845538;
      }
 
   </style> 
@@ -641,7 +653,7 @@ speechSynthesis.speak(utterThis);
                // return audioArray
                var utterThis = new SpeechSynthesisUtterance(text);
                utterThis.rate=0.6;
-               utterThis.pitch=1.4;
+               utterThis.pitch=0.7;
 speechSynthesis.speak(utterThis);
        }
    }
@@ -665,17 +677,34 @@ speechSynthesis.speak(utterThis);
           if (type == 1) {
             GetAudioArray();
            // ForPalyAudio(0);
+          
           } else if (type == 2) {
     
             //停止
             window.speechSynthesis.pause();
           } else if(type == 3){
             window.speechSynthesis.resume();
+          }else if(type == 4){
+            window.speechSynthesis.cancel();
           }else{
             alert("错误的类型");
           }
         }
-    console.log(audioArray);
+        function toducolor(){
+            
+            const cobacke = document.getElementById("toduoption");
+            const coback = cobacke.className;
+            console.log(coback);
+           
+            if(coback == "toduoption"){
+              const cobackwhite = document.getElementById("toduoption").className = "toduoptiona";
+            }else if(coback == "toduoptiona"){
+              const cobackbrown = document.getElementById("toduoption").className = "toduoption";
+            }else{
+              const cobackwhite = document.getElementById("toduoption").className = "toduoption";
+            }
+        }  
+
 
   </script>
   <div>
@@ -689,19 +718,17 @@ speechSynthesis.speak(utterThis);
            <div class="todobar">
              toDo
            </div>
-           <div>
-             <div class="toduoption">
+           <div id="toduoption" class="toduoption">
+             <div class="todoption">
                <a href="https://www.sdiopid.top/tags/%E5%A4%8D%E4%B9%A0/">複習</a>
              </div>
-             <div class="toduoption">
+             <div class="todoption">
                <a href="https://www.sdiopid.top/tags/%E5%BC%80%E5%8F%91/">開發</a>
-             </div>
-             <div class="toduoption">
-              <div class="toduoption" onclick="PalyAudio(1)">播放</div><div class="toduoption" onclick="PalyAudio(2)">停止</div><div class="toduoption" onclick="PalyAudio(3)">继续</div>
-             </div>
-             <div class="toduoption">
-               <a>測試</a>
-             </div>
+             </div class="todoption">
+             <div class="todoption" onclick="PalyAudio(1);toducolor()">播放</div>
+             <div class="todoption" onclick="PalyAudio(2);toducolor()">暂停</div>
+             <div class="todoption" onclick="PalyAudio(3);toducolor()">继续</div>
+             <div class="todoption" onclick="PalyAudio(4);toducolor()">停止</div>
            </div>
          </div>
          <div class="refresh" onclick="refresh()">
