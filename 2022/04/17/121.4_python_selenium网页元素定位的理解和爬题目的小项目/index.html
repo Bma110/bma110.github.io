@@ -1,0 +1,959 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <style>
+    a:link {
+        color: #696969;
+      }
+  </style>
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="blogs">
+  <meta name="author" content="Yuhuai Guo">
+  <meta name="keywords" content="">
+  
+     
+  
+  <title>121.4-python-selenium进阶元素定位和一个小项目 - SDIOPID</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/header.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"www.sdiopid.top","root":"/","version":"1.8.9-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":false,"element":"h2,h3,h4,h5,h6","placement":"left","visible":"always","icon":"❡"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <main> 
+
+    <header id="main-part" class="header" style="height: 70vh;">
+      <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>SDIOPID</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/note/">
+                <i class="iconfont icon-tags-fill"></i>
+                Notes
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+      <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+      <div class="banner" id="banner" parallax=true
+          style="background: url('https://api.yimian.xyz/img?type=wallpaper') no-repeat center center;
+            background-size: cover;">
+        <div class="full-bg-img">
+          <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+            <div class="page-header text-center fade-in-up">
+              <span class="h2" id="subtitle" title="121.4-python-selenium进阶元素定位和一个小项目">
+                
+              </span>
+
+              
+                <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      Yuhuai Guo
+    </span>
+    
+      
+        <span class="post-meta">
+          <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+          <time datetime="2022-04-17 13:07" pubdate>
+            2022年4月17日 下午
+          </time>
+        </span>
+        
+</div>
+
+<div class="mt-1">
+  
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k
+             字
+      </span>
+      
+
+        
+          
+            <span class="post-meta mr-2">
+              <i class="iconfont icon-clock-fill"></i>
+              
+                
+                  15
+                     分钟
+            </span>
+            
+
+              
+                
+                  
+                      <!-- 不蒜子统计文章PV -->
+                      <span id="busuanzi_container_page_pv" style="display: none">
+                        <i class="iconfont icon-eye" aria-hidden="true"></i>
+                        <span id="busuanzi_value_page_pv"></span>
+                           次
+                      </span>
+                      
+                        
+</div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-part">
+      
+        
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">121.4-python-selenium进阶元素定位和一个小项目</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：几秒前
+                
+              </p>
+            
+            <div class="markdown-body">
+              <hr>
+<p><ul class="markdownIt-TOC">
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E8%83%8C%E6%99%AF">背景</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现</a>
+<ul>
+<li><a href="#imports">imports：</a></li>
+<li><a href="#ques_pool">QUES_POOL:</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%8E%A7%E5%88%B6%E5%99%A8">配置控制器：</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87class_name%E5%AE%9A%E4%BD%8D">通过class_name定位：</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87xpath%E5%AE%9A%E4%BD%8D%E5%B9%B6%E4%B8%94%E5%AF%B9%E4%B8%80%E7%B3%BB%E5%88%97%E5%85%83%E7%B4%A0%E8%BF%9B%E8%A1%8C%E6%93%8D%E4%BD%9C">通过XPATH定位，并且对一系列元素进行操作</a></li>
+<li><a href="#%E9%9D%9Ealert%E7%9A%84html%E5%BC%B9%E7%AA%97">非alert的html弹窗</a></li>
+<li><a href="#%E5%A5%87%E8%91%A9%E7%9A%84%E6%97%A0%E6%B3%95%E5%AE%9A%E4%BD%8D%E5%85%83%E7%B4%A0">奇葩的无法定位元素</a></li>
+<li><a href="#%E6%9C%80%E5%90%8E">最后</a></li>
+<li><a href="#%E5%B1%95%E6%9C%9B">展望</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="前言"><a class="markdownIt-Anchor" href="#前言">❡</a> 前言</h2>
+<p>最近参加了一个信息类的比赛，主办方提供了数据库和题库，正好借此练习爬虫。</p>
+<p>selenium不同于其他py爬虫包，它是借助浏览器控制器1直接模拟人进行操作，这也造成selenium必须考虑网页加载和元素定位的问题。</p>
+<p>此次项目主要涉及selenium进行网页元素定位的新知识，包括css定位、xpath定位、js定位等。</p>
+<p>​	元素特征明显可直接复制xpath进行定位，特征不明显的建议使用css_selector。</p>
+<p>selenium还支持导入js帮助进行网页操作，此文不涉及。</p>
+<h2 id="背景"><a class="markdownIt-Anchor" href="#背景">❡</a> 背景</h2>
+<p>尝试使用requests爬取，但是获取题库的参数比较复杂懒得进行研究，于是选择selenium进行傻瓜式爬取。</p>
+<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现">❡</a> 代码实现</h2>
+<h3 id="imports"><a class="markdownIt-Anchor" href="#imports">❡</a> imports：</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">from</span> time <span class="hljs-keyword">import</span> sleep<br><span class="hljs-keyword">from</span> selenium <span class="hljs-keyword">import</span> webdriver<br><span class="hljs-keyword">from</span> selenium.webdriver.common.by <span class="hljs-keyword">import</span> By<br><span class="hljs-keyword">from</span> selenium.webdriver.common.keys <span class="hljs-keyword">import</span> Keys<br><span class="hljs-keyword">from</span> selenium.webdriver.common.action_chains <span class="hljs-keyword">import</span> ActionChains<br><br></code></pre></div></td></tr></table></figure>
+<h3 id="ques_pool"><a class="markdownIt-Anchor" href="#ques_pool">❡</a> QUES_POOL:</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;testpool.txt&quot;</span>,<span class="hljs-string">&quot;a+&quot;</span>,encoding=<span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    f.write(<span class="hljs-string">&quot;这是个题库！&quot;</span>)  <span class="hljs-comment"># 自带文件关闭功能，不需要再写f.close()</span><br><br></code></pre></div></td></tr></table></figure>
+<h3 id="配置控制器"><a class="markdownIt-Anchor" href="#配置控制器">❡</a> 配置控制器：</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><br>user_agent = <span class="hljs-string">&quot;Mozilla/5.0 ******&quot;</span><br>opt = webdriver.ChromeOptions()<br>opt.add_argument(<span class="hljs-string">&#x27;--user-agent=%s&#x27;</span> % user_agent)<br><br>browser = webdriver.Chrome(<span class="hljs-string">r&#x27;D:\chromedriver.exe&#x27;</span>,options=opt)<br>browser.get(<span class="hljs-string">&#x27;url&#x27;</span>)   <span class="hljs-comment">#进入网站</span><br>browser.maximize_window()	<span class="hljs-comment">#全屏</span><br>browser.implicitly_wait(<span class="hljs-number">5</span>)	<span class="hljs-comment">#等待加载</span><br></code></pre></div></td></tr></table></figure>
+<h3 id="通过class_name定位"><a class="markdownIt-Anchor" href="#通过class_name定位">❡</a> 通过class_name定位：</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">element = browser.find_element(By.CLASS_NAME,<span class="hljs-string">&quot;input-phone&quot;</span>)	<span class="hljs-comment">#找到class为input-phone的元素。</span><br>element.clear()<br>element.send_keys(<span class="hljs-string">&quot;WORDS&quot;</span>)<br></code></pre></div></td></tr></table></figure>
+<h3 id="通过xpath定位并且对一系列元素进行操作"><a class="markdownIt-Anchor" href="#通过xpath定位并且对一系列元素进行操作">❡</a> 通过XPATH定位，并且对一系列元素进行操作</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">counti = <span class="hljs-number">1</span><br><span class="hljs-keyword">while</span> counti&lt;<span class="hljs-number">13</span>:<br>    iii = <span class="hljs-built_in">str</span>(counti)<br>    element = browser.find_element(<br>        By.XPATH,<br>        <span class="hljs-string">&#x27;//*[@id=&quot;components-layout-demo-custom-trigger&quot;]/section/main/div/div/div/div[2]/div/div[3]/div[2]/div[2]/div/div[&#x27;</span><br>        + iii+<span class="hljs-string">&#x27;]/div&#x27;</span>	<br>        )	<span class="hljs-comment">#这一排XPATH通过对div序号的更改定位了一系列的元素</span><br>    <span class="hljs-built_in">print</span>(element.text,counti)<br>    element.click()<br>    counti+=<span class="hljs-number">1</span><br>sleep(<span class="hljs-number">1</span>) 	<span class="hljs-comment">#为了给元素进行翻页的时间，以保障稳定性。</span><br></code></pre></div></td></tr></table></figure>
+<p>此外，页面缩放往往对密集元素的定位造成影响，所以尽量不要在运行途中操作页面和鼠标，这有使程序报错的风险。</p>
+<div class="hljs code-wrapper"><pre><code>### 对下拉栏、combobox的操作
+</code></pre></div>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">inputnandu =browser.find_element(By.XPATH,<span class="hljs-string">&#x27;//*[@id=&quot;components-layout-demo-custom-trigger&quot;]/section/main/div/div/div/div[3]/div/div/div[6]/div/div/ul/li/div/input&#x27;</span>)<br>inputnandu.click()<span class="hljs-comment">#试题难度</span><br>inputnandu.send_keys(<span class="hljs-string">&#x27;简单&#x27;</span>)<br>inputnandu.send_keys(Keys.ENTER)<br>inputnandu.click()<br>inputnandu.send_keys(<span class="hljs-string">&#x27;困难&#x27;</span>)<br>inputnandu.send_keys(Keys.ARROW_UP)<br>inputnandu.send_keys(Keys.ENTER)<br>inputnandu.send_keys(<span class="hljs-string">&#x27;中等&#x27;</span>)<br>inputnandu.send_keys(Keys.ARROW_UP)<br>browser.implicitly_wait(<span class="hljs-number">1</span>)<br>inputnandu.send_keys(Keys.ENTER)<br>sleep(<span class="hljs-number">1</span>)<br></code></pre></div></td></tr></table></figure>
+<p>有的下拉栏能够输入，以此帮助选择栏目，此类推荐定位到input元素。</p>
+<p>无input元素的尝试挑几个元素click( )，然后向元素发送键盘指令，比如up-arrow、enter。</p>
+<p>注意：带input的运行可以忽略加载时间，而没有input的<strong>必须</strong>考虑下拉栏加载时间。页面有加载动画的，必须考虑元素加载时间。</p>
+<h3 id="非alert的html弹窗"><a class="markdownIt-Anchor" href="#非alert的html弹窗">❡</a> 非alert的html弹窗</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">slalbel = browser.find_element(By.XPATH,<span class="hljs-string">&#x27;//*[@id=&quot;components-layout-demo-custom-trigger&quot;]/section/main/div/div/div/div[3]/div/div/div[7]&#x27;</span>)<br>slalbel.click()	<span class="hljs-comment">##点击</span><br>sleep(<span class="hljs-number">1</span>)	<span class="hljs-comment">#加载时间</span><br>elements = browser.find_elements(By.CLASS_NAME,<span class="hljs-string">&quot;item&quot;</span>)<br>btn = browser.find_elements(By.CLASS_NAME,<span class="hljs-string">&#x27;btns&#x27;</span>)<br><span class="hljs-built_in">print</span>(elements[<span class="hljs-number">4</span>].text,btn[<span class="hljs-number">0</span>].text)	<span class="hljs-comment">#加载的内容</span><br>ActionChains(browser).click(elements[<span class="hljs-number">4</span>]).click(btn[<span class="hljs-number">0</span>]).perform()<br></code></pre></div></td></tr></table></figure>
+<p>如果考虑了弹窗的加载时间，那么直接使用XPATH进行定位元素。</p>
+<p>有的元素需要长按拖动等复杂的一系列连续操作，可以尝试使用ActionChains，这里略。</p>
+<h3 id="奇葩的无法定位元素"><a class="markdownIt-Anchor" href="#奇葩的无法定位元素">❡</a> 奇葩的无法定位元素</h3>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">hands=browser.window_handles<br>browser.switch_to.window(hands[-<span class="hljs-number">1</span>])	<span class="hljs-comment">#方法一：检查窗口，是不是有新页面、ifram等</span><br><br>idren = browser.find_element(By.CSS_SELECTOR,<span class="hljs-string">&#x27;body &gt; div:nth-child(11) &gt; div &gt; div.ant-modal-wrap.ant-modal-centered.ant-modal-confirm-centered &gt; div &gt; div.ant-modal-content &gt; div &gt; div &gt; div.ant-modal-confirm-btns &gt; button:nth-child(1)&#x27;</span>)	<span class="hljs-comment">#方法二：使用css_selector进行定位</span><br>idren.text <span class="hljs-comment">#&#x27;仍要交卷&#x27;</span><br>idren.send_keys(Keys.ENTER)<br>sleep(<span class="hljs-number">5</span>)	<span class="hljs-comment">#方法三：给予充足的加载时间</span><br>chakan = browser.find_element(By.CSS_SELECTOR,<span class="hljs-string">&#x27;body &gt; div:nth-child(11) &gt; div &gt; div.ant-modal-wrap.ant-modal-centered.ant-modal-confirm-centered &gt; div &gt; div.ant-modal-content &gt; div &gt; div &gt; div.ant-modal-confirm-btns &gt; button.ant-btn.ant-btn-primary&#x27;</span>)<br>chakan.text <span class="hljs-comment">#看详情&#x27;</span><br>chakan.send_keys(Keys.ENTER)<br></code></pre></div></td></tr></table></figure>
+<p>使用这三个方法，我遇到的问题得到了解决。</p>
+<h3 id="最后"><a class="markdownIt-Anchor" href="#最后">❡</a> 最后</h3>
+<hr />
+<p>我推荐使用IDLE进行调试，而不是单独使用VScode。</p>
+<p><img src="/img/image-20220417135445225.png" srcset="/img/loading.gif" lazyload alt="" /></p>
+<h3 id="展望"><a class="markdownIt-Anchor" href="#展望">❡</a> 展望</h3>
+<p>调整或调试程序要目的明确并且有序。</p>
+<p>要区分测试和成品。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/">第二级</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%AC%AC%E4%BA%8C%E7%BA%A7/%E5%AD%A6%E4%B9%A0/python/">python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    博客所有内容除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-NC-SA 4.0 协议</a> ，转载请<a href="https://www.sdiopid.top/about/" rel="nofollow noopener">@SDIOPID</a>呦！<img src="/img/lxh2.png" srcset="/img/loading.gif" lazyloadstyle="width:50px; height:50px;">
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/18/121.4_python_tkinter_timer/">
+                        <span class="hidden-mobile">python_细究tkinter——timer</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="text" style=" text-align:center;">在这里给我留言👇</div>
+  <script type="text/javascript">
+    Fluid.utils.lazyComments('comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Bma110/comment');
+      s.setAttribute('issue-term', 'title');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="/img/sxin.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+      
+
+      
+
+      
+        <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+      
+   </main>
+      
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://www.sdiopid.top" target="_blank" rel="nofollow noopener"><span>斯丢匹得</span></a> <i class="iconfont icon-love"></i> <a  target="_blank" rel="nofollow noopener"><span>SDIOPID</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+  
+<mytool>
+  <style type="text/css">
+     .mytool{
+       width: fit-content;
+       height: 80%;
+       left: 5px;
+       bottom: 10px;
+       border-radius: 40px;
+       background: #aa2116;
+       overflow: auto;
+       z-index: 99;
+       float: left;
+       display: inline; 
+       position: fixed;
+       transition: transform 150ms ease-in; 
+       transform: translateX(calc(-100% + 12px)) scale(1,calc(0.07));     
+     }
+     .mytool:hover{
+       transform: translateX(0px)!important;
+       border-radius: 10px!important;   
+     }
+     .mytool::-webkit-scrollbar {
+       width: 0;
+     }
+
+     .sid-bar-inner{
+       margin-right: 20px;
+     }
+
+     .sid-bar-inner-title{
+       background-color: #ffffff; 
+     }
+
+     .sid-bar-inner-poem{
+       margin: 1px;
+       flex-wrap: nowrap;
+       background-color: #ffffff;
+     }
+     .sid-bar-inner-poem {
+       display: flex;
+       justify-content: space-evenly;
+     }
+     .sidebar-quote-content {
+       writing-mode: vertical-lr;
+       cursor: pointer;
+       margin: 5px;
+       
+
+     }
+     .sidebar-quote-from {
+         writing-mode: vertical-lr;
+         margin: 5px;
+     }
+     .refresh{
+       text-align: center;
+       color: #ffffff;
+       background-color: #845538;
+       margin: 0px;
+       margin-bottom: 1px;
+       height: 100%
+       width:100%;
+     }
+     .play{
+       background-color: #aa2116;
+       z-index: 9999;
+       position: relative;
+       float: right;
+       display: inline;
+       height: 49px;
+       overflow: hidden;
+     }
+     .playingp{
+       margin-left: 0px;
+       width: 20px;
+       color: #ffffff;
+       display: inline-block;
+       white-space: nowrap;
+       overflow: hidden;
+       animation: 16s wordsLoop linear infinite normal;
+       writing-mode: vertical-lr;
+       
+     }
+     .playing{
+       background-color:#845538;
+       z-index: 9999;
+       position: relative;
+       float: right;
+       display: inline;
+       height: 100%;
+       overflow: hidden;
+     }
+     .playing br{
+       display: none;
+     }
+     @keyframes wordsLoop {
+       0% {
+           transform: translateY(150px);
+           -webkit-transform: translateY(150px);
+        }
+       100% {
+           transform: translateY(-100%);
+           -webkit-transform: translateY(-100%);
+        }
+     }
+     .todobar{
+       background-color: #845538;
+       text-align: center;
+       color: #ffffff;
+     }
+     .todoption{
+       border: 1px solid #845538;
+       display:inline;
+       text-align: center;
+       color: #ffffff;
+     }
+     .toduoption{
+       border: 1px solid #845538;
+       display:inline;
+       text-align: center;
+       color: #ffffff;
+     }
+     .toduoptiona{
+       border: 1px solid #ffffff;
+       display:inline;
+       text-align: center;
+       color: #845538;
+     }
+
+  </style> 
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://tanyaodan.com/wp-includes/js/jquery.pjax.js">$(document).pjax('a[target!=_blank]', ['#main-part'], {fragment:['#main-part'], timeout:8000});
+  </script>
+  <script>
+   function refresh(){
+       var poem_part, poem_full;
+             const content = document.getElementById("SidebarQuoteContent");
+             const from = document.getElementById("SidebarQuoteFrom");
+             function toggleFull() {
+                 if (content.innerHTML == poem_part) {
+                     content.innerHTML = poem_full;
+                 } else {
+                     content.innerHTML = poem_part;
+                 }
+             }
+             jinrishici.load(function(result) {
+                 poem_part = result.data.content;
+                 content.innerText = poem_part;
+                 from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                     + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                 poem_full = result.data.origin.content.join('<br/>');
+                 content.onclick = toggleFull;
+             });
+     }
+  </script>  
+  <script>
+    var text;
+    plp = function(){
+
+     const btncolor = document.getElementById("plpbtn");
+     
+     if(btncolor.className=="play"){
+         btncolor.className = "playing";
+         var poem_part, poem_full;
+         const content = document.getElementById("SidebarQuoteContent");
+         const from = document.getElementById("SidebarQuoteFrom");
+         const pfrom = from.innerHTML;    
+         const contentpoem = document.getElementById("SidebarQuoteContent").innerHTML;
+         const ddcontentpoem = contentpoem + pfrom; 
+         const dcontentpoem = ddcontentpoem.replace(/<br\/>/g, "");
+             var lenthp = dcontentpoem.length;
+             lenthp = parseInt(lenthp/1.6);
+             lenthp = lenthp+"s";
+             const btnpppl = document.getElementById("plpbtnp").style.animation = lenthp+" wordsLoop linear infinite normal";
+             console.log("poemshowdone&dcontentpoemvalued");
+             text = dcontentpoem;
+         const btnp = document.getElementById("plpbtnp").innerHTML = dcontentpoem;
+         const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px))";
+     }else if(btncolor.className=="playing"){
+         btncolor.className = "play";
+         const btnp = document.getElementById("plpbtnp").innerHTML ="<br/>";
+         const btncolorp = document.getElementById("mytool").style.transform = " translateX(calc(-100% + 12px)) scale(1,calc(0.07))";
+
+     }
+     
+   }
+
+   var audioArray = [];
+   var mp3 = "";
+   console.log(text)
+   function GetAudioArray(){
+              //长度判断 这个接口有长度限制 其次get请求也有长度限制，因此这里做分段处理 用500 个长度我觉得是比较好的了。
+        const textlength = text.length;
+        if (textlength > 500) {
+    
+                let list = group(text, 500);
+                list.map(content => {
+                  console.log("dawubail");
+                  //audioArray.push("http://tts.baidu.com/text2audio?cuid=baiduid&lan=zh&ctp=1&pdt=311&tex=" + content);
+                  //console.log(audioArray);
+                  var utterThis = new SpeechSynthesisUtterance(text);
+
+speechSynthesis.speak(utterThis);
+                });
+       } else {
+                console.log("xiaowubai1");
+                //audioArray.push("http://tts.baidu.com/text2audio?cuid=baiduid&lan=zh&ctp=1&pdt=311&tex=" + text);
+                //console.log(audioArray);
+               // return audioArray
+               var utterThis = new SpeechSynthesisUtterance(text);
+               utterThis.rate=0.6;
+               utterThis.pitch=0.7;
+speechSynthesis.speak(utterThis);
+       }
+   }
+
+        //字符串分组
+        function group(str, len) {
+          var r = [];
+          function doGroup(s) {
+            if (!s) return;
+            r.push(s.substr(0, len));
+            s = s.substr(len);
+            doGroup(s)
+          }
+          doGroup(str);
+          return r;
+        }
+    
+        //播放函数
+        function PalyAudio(type) {
+    
+          if (type == 1) {
+            GetAudioArray();
+           // ForPalyAudio(0);
+          
+          } else if (type == 2) {
+    
+            //停止
+            window.speechSynthesis.pause();
+          } else if(type == 3){
+            window.speechSynthesis.resume();
+          }else if(type == 4){
+            window.speechSynthesis.cancel();
+          }else{
+            alert("错误的类型");
+          }
+        }
+        function toducolor(){
+            
+            const cobacke = document.getElementById("toduoption");
+            const coback = cobacke.className;
+            console.log(coback);
+           
+            if(coback == "toduoption"){
+              const cobackwhite = document.getElementById("toduoption").className = "toduoptiona";
+            }else if(coback == "toduoptiona"){
+              const cobackbrown = document.getElementById("toduoption").className = "toduoption";
+            }else{
+              const cobackwhite = document.getElementById("toduoption").className = "toduoption";
+            }
+        }  
+
+
+  </script>
+  <div>
+     <div class="mytool" id="mytool" >
+       <div class="play" style="width: 20px" id="plpbtn" onclick="plp();"><p id="plpbtnp" class="playingp"></p></div>
+       <div class="sid-bar-inner">
+         <div class="sid-bar-inner-title" >
+           <p style="margin-left: 10px;margin-bottom: 1px ;font-family: fantasy;">THE TOOL BAR</p>
+         </div>
+         <div>
+           <div class="todobar">
+             toDo
+           </div>
+           <div id="toduoption" class="toduoption">
+             <div class="todoption">
+               <a href="https://www.sdiopid.top/tags/%E5%A4%8D%E4%B9%A0/">複習</a>
+             </div>
+             <div class="todoption">
+               <a href="https://www.sdiopid.top/tags/%E5%BC%80%E5%8F%91/">開發</a>
+             </div class="todoption">
+             <div class="todoption" onclick="PalyAudio(1);toducolor()">播放</div>
+             <div class="todoption" onclick="PalyAudio(2);toducolor()">暂停</div>
+             <div class="todoption" onclick="PalyAudio(3);toducolor()">继续</div>
+             <div class="todoption" onclick="PalyAudio(4);toducolor()">停止</div>
+           </div>
+         </div>
+         <div class="refresh" onclick="refresh()">
+           下一首
+         </div>
+         
+         <div class="sid-bar-inner-poem">
+
+           <p class="sidebar-quote-content" id="SidebarQuoteContent">主人不来过夜半，闲敲棋子落灯花。</p>
+           <p class="sidebar-quote-from" id="SidebarQuoteFrom">——宋代·赵师秀<br/>《约客》</p>
+           <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+           <script>
+               var poem_part, poem_full;
+               const content = document.getElementById("SidebarQuoteContent");
+               const from = document.getElementById("SidebarQuoteFrom");
+               function toggleFull() {
+                   if (content.innerHTML == poem_part) {
+                       content.innerHTML = poem_full;
+                   } else {
+                       content.innerHTML = poem_part;
+                   }
+               }
+               jinrishici.load(function(result) {
+                   poem_part = result.data.content;
+                   content.innerText = poem_part;
+                   from.innerHTML = '——' + result.data.origin.dynasty + '·'
+                       + result.data.origin.author + '<br/>' + '《' + result.data.origin.title + '》';
+                   poem_full = result.data.origin.content.join('<br/>');
+                   content.onclick = toggleFull;
+               });
+           </script>
+         </div>
+       </div>
+     </div>
+   </div>
+ </mytool>
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","width":100,"height":200},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>
